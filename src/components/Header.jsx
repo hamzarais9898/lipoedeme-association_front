@@ -17,7 +17,7 @@ export function Header({ currentLang = "fr", onLangChange, isDark, onThemeToggle
     const languages = ["fr", "en", "ar"]
 
     // Updated navigation items
-    const navKeys = ["home", "about", "lipoedeme", "actions", "adhesion", "news", "contact"]
+    const navKeys = ["about", "lipoedeme", "actions", "adhesion", "news", "contact"]
 
     return (
         <header
@@ -29,13 +29,14 @@ export function Header({ currentLang = "fr", onLangChange, isDark, onThemeToggle
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition">
-                        <div className="w-12 h-12 relative">
-                            <img src={image1} alt="MOSLIPO Logo" width={48} height={48} className="object-contain" />
-                        </div>
-                        <div className="hidden sm:block">
-                            <div className="font-bold text-[#538270] text-lg">MOSLIPO</div>
-                            <div className="text-xs text-[#538270]/70">Lipœdème</div>
+                    <Link to="/" className="relative z-50 hover:opacity-95 transition h-full flex items-center">
+                        {/* Placeholder to reserve width */}
+                        <div className="w-28" />
+
+                        {/* Actual Logo positioned absolutely to break out of bounds */}
+                        <div className={`absolute top-0 left-0 w-28 h-28 rounded-b-3xl shadow-sm flex items-center justify-center transition-all duration-300 ${isDark ? "bg-slate-900" : "bg-white"
+                            }`}>
+                            <img src={image1} alt="MOSLIPO Logo" className="w-full h-full object-contain p-2" />
                         </div>
                     </Link>
 
@@ -50,7 +51,7 @@ export function Header({ currentLang = "fr", onLangChange, isDark, onThemeToggle
                                         className={`transition-colors font-medium text-sm whitespace-nowrap ${isDark ? "text-slate-300 hover:text-white" : "text-gray-700 hover:text-[#538270]"
                                             }`}
                                     >
-                                        {t(`nav.${key}`, currentLang)}
+                                        {t(`nav.${key}`, currentLang).toUpperCase()}
                                     </Link>
                                 ),
                         )}

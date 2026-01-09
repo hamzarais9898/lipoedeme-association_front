@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2 } from "lucide-react"
+import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users } from "lucide-react"
 import { t } from "../context/translations"
 import image1 from "../assets/images/logo1.png"
 import image2 from "../assets/images/logo2.png"
@@ -61,6 +61,8 @@ export default function Home({ lang = "fr" }) {
         { code: "+44", country: "UK" },
         { code: "+1", country: "USA" },
     ]
+
+    const symptomsIcons = [AlertCircle, Droplet, Activity, Zap, Heart, Users]
 
     return (
         <div className="bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
@@ -173,12 +175,10 @@ export default function Home({ lang = "fr" }) {
                             </motion.div>
                         </motion.div>
 
-                        {/* Right Visual - Logo Showcase */}
+                        {/* Right Visual - Text Showcase */}
                         <motion.div variants={itemVariants} className="flex-1 flex items-center justify-center relative">
                             <motion.div
-                                animate={{ y: [-20, 20, -20] }}
-                                transition={{ duration: 4, repeat: Infinity }}
-                                className="relative w-full aspect-square flex items-center justify-center"
+                                className="relative w-full aspect-square flex items-center justify-center p-8"
                             >
                                 {/* Animated circle background */}
                                 <motion.div
@@ -192,17 +192,16 @@ export default function Home({ lang = "fr" }) {
                                     className="absolute inset-4 rounded-full border-2 border-[#538270]/20"
                                 />
 
-                                {/* Logo */}
+                                {/* Text */}
                                 <motion.div
-                                    whileHover={{ scale: 1.1, rotate: 5 }}
-                                    transition={{ type: "spring", stiffness: 200 }}
-                                    className="relative z-10"
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.8 }}
+                                    className="relative z-10 text-center"
                                 >
-                                    <img
-                                        src={image2}
-                                        alt="MOSLIPO Logo"
-                                        className="w-72 h-72 object-contain drop-shadow-2xl"
-                                    />
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#538270] dark:text-teal-500 leading-tight">
+                                        The Moroccan Society of Lipoedema and Associated Pathologies
+                                    </h2>
                                 </motion.div>
                             </motion.div>
                         </motion.div>
@@ -226,32 +225,35 @@ export default function Home({ lang = "fr" }) {
                         </p>
                     </motion.div>
 
-                    {/* Key Characteristics Grid */}
+                    {/* Key Characteristics Grid (Symptoms) */}
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true }}
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
                     >
-                        {[
-                            { title: t("home.whatIs.cards.sym", lang), icon: "🔄" },
-                            { title: t("home.whatIs.cards.pain", lang), icon: "⚡" },
-                            { title: t("home.whatIs.cards.weight", lang), icon: "⚖️" },
-                            { title: t("home.whatIs.cards.spared", lang), icon: "🦶" },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                variants={itemVariants}
-                                whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(83, 130, 112, 0.15)" }}
-                                className="group p-8 rounded-2xl bg-white dark:bg-slate-800 border-2 border-[#B4C9B3]/30 dark:border-slate-700/50 hover:border-[#B4C9B3] dark:hover:border-teal-500/50 transition-all duration-300 text-center cursor-pointer"
-                            >
-                                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                                    {item.icon}
-                                </div>
-                                <h3 className="text-lg font-bold text-[#538270] dark:text-teal-400 whitespace-pre-line transition-colors">{item.title}</h3>
-                            </motion.div>
-                        ))}
+                        {t("lipoedeme.symptoms.items", lang).map((symptom, i) => {
+                            const Icon = symptomsIcons[i % symptomsIcons.length]
+                            return (
+                                <motion.div
+                                    key={i}
+                                    variants={itemVariants}
+                                    whileHover={{ y: -5 }}
+                                    className="group bg-white dark:bg-slate-700 p-6 sm:p-8 rounded-2xl border-2 border-[#B4C9B3]/30 dark:border-slate-600 hover:border-[#538270] dark:hover:border-teal-500 shadow-md hover:shadow-xl transition-all duration-300"
+                                >
+                                    <div className="flex items-start gap-4 text-start font-dir">
+                                        <div className="p-3 bg-[#B4C9B3]/20 dark:bg-teal-900/40 rounded-xl group-hover:bg-[#538270]/10 transition-colors">
+                                            <Icon className="text-[#538270] dark:text-teal-400 group-hover:scale-110 transition-transform" size={24} />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-lg font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{symptom.title}</h3>
+                                            <p className="text-gray-700 dark:text-slate-300 text-sm leading-relaxed transition-colors">{symptom.desc}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )
+                        })}
                     </motion.div>
 
                     {/* Description & CTA */}
@@ -336,7 +338,7 @@ export default function Home({ lang = "fr" }) {
                                     whileTap={{ scale: 0.95 }}
                                     className="px-8 py-4 bg-[#B4C9B3] text-[#538270] rounded-xl font-bold text-lg flex items-center gap-2 group hover:bg-white transition-all duration-300"
                                 >
-                                    {lang === "fr" ? "Découvrir Notre Équipe" : lang === "en" ? "Discover Our Team" : "اكتشف فريقنا"}
+                                    {lang === "fr" ? "Découvrir les membres du bureau" : lang === "en" ? "Discover Our Team" : "اكتشف فريقنا"}
                                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                 </motion.button>
                             </Link>
@@ -344,7 +346,7 @@ export default function Home({ lang = "fr" }) {
 
                         <motion.div
                             variants={itemVariants}
-                            className="relative h-64 sm:h-96 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20"
+                            className="relative h-80 sm:h-[500px] rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20"
                         >
                             <motion.div
                                 animate={{ y: [-10, 10, -10] }}

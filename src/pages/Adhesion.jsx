@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { CheckCircle2, Users, Award, Globe, ArrowRight, Heart } from "lucide-react"
+import { CheckCircle2, Users, Award, Globe, ArrowRight, Heart, FileText, ClipboardCheck, Vote, PartyPopper } from "lucide-react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
 
@@ -47,7 +47,7 @@ export default function Adhesion({ lang = "fr" }) {
         }
     ]
 
-    const stepIcons = ["📋", "🤝", "👥", "🗳️", "🎉"]
+    const stepIcons = [FileText, Users, ClipboardCheck, Vote, PartyPopper]
 
     return (
         <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
@@ -107,7 +107,6 @@ export default function Adhesion({ lang = "fr" }) {
                         className="text-center mb-16"
                     >
                         <h2 className="text-4xl font-bold text-[#538270] dark:text-teal-500 mb-6 transition-colors">{t("membership.types.title", lang)}</h2>
-                        <p className="text-xl text-gray-600 dark:text-slate-400 max-w-2xl mx-auto transition-colors">{t("membership.types.subtitle", lang)}</p>
                     </motion.div>
 
                     <motion.div
@@ -210,33 +209,65 @@ export default function Adhesion({ lang = "fr" }) {
                         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#538270] to-[#B4C9B3] dark:from-teal-600 dark:to-teal-400 transform -translate-x-1/2 transition-colors" />
 
                         <div className="space-y-12">
-                            {t("membership.process.steps", lang).map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className={`flex items-start gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
-                                >
-                                    {/* Step number */}
-                                    <div className="hidden md:flex flex-shrink-0 w-20 justify-center">
-                                        <motion.div
-                                            whileHover={{ scale: 1.2, rotate: 10 }}
-                                            className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#538270] to-[#3d5f52] dark:from-teal-600 dark:to-teal-800 text-white font-bold text-xl shadow-lg z-10 transition-colors"
-                                        >
-                                            {i + 1}
-                                        </motion.div>
-                                    </div>
+                            {t("membership.process.steps", lang).map((item, i) => {
+                                const Icon = stepIcons[i % stepIcons.length]
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="relative flex items-center justify-between mb-8 md:mb-12"
+                                    >
+                                        {/* Left Side (Content for even, empty for odd) */}
+                                        <div className={`w-full md:w-[45%] ${i % 2 === 0 ? "text-right pr-0 md:pr-8 mx-auto md:mx-0 order-2 md:order-1" : "hidden md:block md:order-1"}`}>
+                                            {i % 2 === 0 && (
+                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all">
+                                                    <div className="flex justify-end mb-3">
+                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
+                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
+                                                </div>
+                                            )}
+                                        </div>
 
-                                    {/* Content */}
-                                    <div className="md:w-1/2 bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all text-start">
-                                        <div className="text-3xl mb-3">{stepIcons[i % stepIcons.length]}</div>
-                                        <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
-                                        <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                        {/* Center Marker */}
+                                        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 flex flex-col items-center z-10 top-0 h-full">
+                                            <motion.div
+                                                whileHover={{ scale: 1.2, rotate: 10 }}
+                                                className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#538270] to-[#3d5f52] dark:from-teal-600 dark:to-teal-800 text-white font-bold text-lg md:text-xl shadow-lg"
+                                            >
+                                                {i + 1}
+                                            </motion.div>
+                                        </div>
+
+                                        {/* Right Side (Content for odd, empty for even) */}
+                                        <div className={`w-full md:w-[45%] pl-16 md:pl-8 ${i % 2 !== 0 ? "text-left md:order-3 mx-auto md:mx-0" : "hidden md:block md:order-3"}`}>
+                                            {i % 2 !== 0 && (
+                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all">
+                                                    <div className="flex justify-start mb-3">
+                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
+                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
+                                                </div>
+                                            )}
+                                            {/* Mobile layout for Even items (render on right/full width but pushed by padding) */}
+                                            {i % 2 === 0 && <div className="md:hidden block">
+                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all text-left">
+                                                    <div className="flex justify-start mb-3">
+                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
+                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
+                                                </div>
+                                            </div>}
+                                        </div>
+                                    </motion.div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ const translations = {
         nav: {
             home: "Home",
             about: "About",
-            lipoedeme: "Lipœdème",
+            lipoedeme: "Le Lipœdème",
             actions: "Our Actions",
             adhesion: "Membership",
             news: "News",
@@ -13,7 +13,7 @@ const translations = {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "All rights reserved © 2025 MOSLIPO"
+            rights: "All rights reserved © 2025 MOSLIPOD"
         },
         home: {
             hero: {
@@ -40,7 +40,7 @@ const translations = {
         about: {
             hero: {
                 badge: "Founded in 2025 in Casablanca",
-                title: "About MOSLIPO",
+                title: "About MOSLIPOD",
                 subtitle: "A non-profit medical association dedicated to the recognition, professional training and awareness of lipedema"
             },
             genesis: {
@@ -82,14 +82,14 @@ const translations = {
             stats: {
                 title: "Association Statutes",
                 subtitle: "Consult and download the official statutes of the Moroccan Lipedema Society",
-                description: "The full statutes of MOSLIPO detail the governance, goals, rights and obligations of members, as well as all regulatory provisions of the association.",
+                description: "The full statutes of MOSLIPOD detail the governance, goals, rights and obligations of members, as well as all regulatory provisions of the association.",
                 cta: "Download Statutes (PDF)",
                 info: "PDF Format • Updated 2025 • Available immediately"
             },
             cta: {
                 title: "Join Our Mission",
-                subtitle: "Whether you are a healthcare professional, patient or simply interested in our cause, find out how you can support MOSLIPO",
-                button1: "Join MOSLIPO",
+                subtitle: "Whether you are a healthcare professional, patient or simply interested in our cause, find out how you can support MOSLIPOD",
+                button1: "Discover MOSLIPOD",
                 button2: "Back to Home"
             }
         },
@@ -155,9 +155,9 @@ const translations = {
             },
             cta: {
                 title: "You are not alone",
-                subtitle: "MOSLIPO is here to accompany you, inform you and guide you towards adapted resources. Contact us to learn more about treatment options and specialized centers.",
+                subtitle: "MOSLIPOD is here to accompany you, inform you and guide you towards adapted resources. Contact us to learn more about treatment options and specialized centers.",
                 button1: "Contact Us",
-                button2: "Join MOSLIPO"
+                button2: "Join MOSLIPOD"
             }
         },
         actions: {
@@ -214,11 +214,11 @@ const translations = {
         membership: {
             hero: {
                 badge: "Join our community",
-                title: "Become a Member of MOSLIPO",
+                title: "Become a Member of MOSLIPOD",
                 subtitle: "Join our community of healthcare professionals committed to the recognition, research and management of lipedema"
             },
             learnMore: "Learn more",
-            intro: "MOSLIPO is open to Moroccan and foreign healthcare professionals wishing to commit to the recognition, research and management of lipedema.",
+            intro: "MOSLIPOD is open to Moroccan and foreign healthcare professionals wishing to commit to the recognition, research and management of lipedema.",
             types: {
                 title: "Membership Types",
                 active: {
@@ -273,7 +273,7 @@ const translations = {
                     { title: "Sponsorship", desc: "Obtain the support of two active members" },
                     { title: "Committee", desc: "Examination of your application by the Committee" },
                     { title: "Assembly", desc: "Election vote in General Assembly" },
-                    { title: "Confirmation", desc: "Welcome as a member of MOSLIPO!" }
+                    { title: "Confirmation", desc: "Welcome as a member of MOSLIPOD!" }
                 ]
             },
             cta: {
@@ -317,7 +317,7 @@ const translations = {
         nav: {
             home: "Accueil",
             about: "À propos",
-            lipoedeme: "Lipœdème",
+            lipoedeme: "Le Lipœdème",
             actions: "Nos actions",
             adhesion: "Adhésion",
             news: "Actualités",
@@ -327,7 +327,7 @@ const translations = {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "Tous droits réservés © 2025 MOSLIPO"
+            rights: "Tous droits réservés © 2025 MOSLIPOD"
         },
         home: {
             hero: {
@@ -354,7 +354,7 @@ const translations = {
         about: {
             hero: {
                 badge: "Fondée en 2025 à Casablanca",
-                title: "À Propos de MOSLIPO",
+                title: "À Propos de MOSLIPOD",
                 subtitle: "Une association médicale à but non lucratif dédiée à la reconnaissance, la formation professionnelle et la sensibilisation autour du lipœdème"
             },
             genesis: {
@@ -396,14 +396,14 @@ const translations = {
             stats: {
                 title: "Statuts de l'Association",
                 subtitle: "Consultez et téléchargez les statuts officiels de la Société Marocaine du Lipœdème",
-                description: "Les statuts complets de MOSLIPO détaillent la gouvernance, les objectifs, les droits et obligations des membres, ainsi que toutes les dispositions réglementaires de l'association.",
+                description: "Les statuts complets de MOSLIPOD détaillent la gouvernance, les objectifs, les droits et obligations des membres, ainsi que toutes les dispositions réglementaires de l'association.",
                 cta: "Télécharger les Statuts (PDF)",
                 info: "Format PDF • Mise à jour 2025 • Disponible immédiatement"
             },
             cta: {
                 title: "Rejoignez Notre Mission",
-                subtitle: "Que vous soyez professionnel de santé, patient ou simplement intéressé par notre cause, découvrez comment vous pouvez soutenir MOSLIPO",
-                button1: "Adhérer à MOSLIPO",
+                subtitle: "Que vous soyez professionnel de santé, patient ou simplement intéressé par notre cause, découvrez comment vous pouvez soutenir MOSLIPOD",
+                button1: "Découvrir MOSLIPOD",
                 button2: "Retourner à l'accueil"
             }
         },
@@ -469,9 +469,9 @@ const translations = {
             },
             cta: {
                 title: "Vous n'êtes pas seul(e)",
-                subtitle: "MOSLIPO est là pour vous accompagner, vous informer et vous orienter vers les ressources adaptées. Contactez-nous pour en savoir plus sur les options de traitement et les centres spécialisés.",
+                subtitle: "MOSLIPOD est là pour vous accompagner, vous informer et vous orienter vers les ressources adaptées. Contactez-nous pour en savoir plus sur les options de traitement et les centres spécialisés.",
                 button1: "Nous Contacter",
-                button2: "Adhérer à MOSLIPO"
+                button2: "Adhérer à MOSLIPOD"
             }
         },
         actions: {
@@ -528,11 +528,11 @@ const translations = {
         membership: {
             hero: {
                 badge: "Rejoignez notre communauté",
-                title: "Devenez Membre de MOSLIPO",
+                title: "Devenez Membre de MOSLIPOD",
                 subtitle: "Rejoignez notre communauté de professionnels de santé engagés dans la reconnaissance, la recherche et la prise en charge du lipœdème"
             },
             learnMore: "En savoir plus",
-            intro: "MOSLIPO est ouverte aux professionnels de santé marocains et étrangers souhaitant s'engager dans la reconnaissance, la recherche et la prise en charge du lipœdème.",
+            intro: "MOSLIPOD est ouverte aux professionnels de santé marocains et étrangers souhaitant s'engager dans la reconnaissance, la recherche et la prise en charge du lipœdème.",
             types: {
                 title: "Types de Membres",
                 active: {
@@ -587,7 +587,7 @@ const translations = {
                     { title: "Parrainage", desc: "Obtenez le soutien de deux membres actifs" },
                     { title: "Comité", desc: "Examen de votre candidature par le Comité" },
                     { title: "Assemblée", desc: "Vote d'élection en Assemblée Générale" },
-                    { title: "Confirmation", desc: "Bienvenue en tant que membre de MOSLIPO !" }
+                    { title: "Confirmation", desc: "Bienvenue en tant que membre de MOSLIPOD !" }
                 ]
             },
             cta: {
@@ -641,7 +641,7 @@ const translations = {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "© 2025 MOSLIPO. جميع الحقوق محفوظة."
+            rights: "© 2025 MOSLIPOD. جميع الحقوق محفوظة."
         },
         home: {
             hero: {
@@ -668,7 +668,7 @@ const translations = {
         about: {
             hero: {
                 badge: "تأسست في 2025 بالدار البيضاء",
-                title: "عن MOSLIPO",
+                title: "عن MOSLIPOD",
                 subtitle: "جمعية طبية غير ربحية مكرسة للتعريف والتدريب المهني والتوعية حول الوذمة الشحمية"
             },
             genesis: {
@@ -710,14 +710,14 @@ const translations = {
             stats: {
                 title: "القانون الأساسي للجمعية",
                 subtitle: "اطلع على القانون الأساسي الرسمي للجمعية المغربية للوذمة الشحمية وقم بتحميله",
-                description: "يفصل القانون الأساسي الكامل لـ MOSLIPO الحكامة والأهداف وحقوق وواجبات الأعضاء، وكافة الأحكام التنظيمية للجمعية.",
+                description: "يفصل القانون الأساسي الكامل لـ MOSLIPOD الحكامة والأهداف وحقوق وواجبات الأعضاء، وكافة الأحكام التنظيمية للجمعية.",
                 cta: "تحميل القانون الأساسي (PDF)",
                 info: "صيغة PDF • تحديث 2025 • متاح فوراً"
             },
             cta: {
                 title: "انضم إلى مهمتنا",
-                subtitle: "سواء كنت مهنياً صحياً أو مريضاً أو مهتماً بقضيتنا، اكتشف كيف يمكنك دعم MOSLIPO",
-                button1: "انضم إلى MOSLIPO",
+                subtitle: "سواء كنت مهنياً صحياً أو مريضاً أو مهتماً بقضيتنا، اكتشف كيف يمكنك دعم MOSLIPOD",
+                button1: "انضم إلى MOSLIPOD",
                 button2: "العودة إلى الرئيسية"
             }
         },
@@ -783,9 +783,9 @@ const translations = {
             },
             cta: {
                 title: "لستِ وحدكِ",
-                subtitle: "MOSLIPO هنا لمرافقتكِ وإعلامكِ وتوجيهكِ نحو الموارد المناسبة. اتصلي بنا لمعرفة المزيد عن خيارات العلاج والمراكز المتخصصة.",
+                subtitle: "MOSLIPOD هنا لمرافقتكِ وإعلامكِ وتوجيهكِ نحو الموارد المناسبة. اتصلي بنا لمعرفة المزيد عن خيارات العلاج والمراكز المتخصصة.",
                 button1: "اتصلي بنا",
-                button2: "انضمي إلى MOSLIPO"
+                button2: "انضمي إلى MOSLIPOD"
             }
         },
         actions: {
