@@ -12,6 +12,7 @@ export default function Contact({ lang = "fr" }) {
         nom: "",
         email: "",
         telephone: "",
+        countryCode: "+212",
         organisation: "",
         subject: "",
         message: "",
@@ -28,6 +29,26 @@ export default function Contact({ lang = "fr" }) {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
     }
+
+    const countryCodes = [
+        { code: "+212", country: "Maroc" },
+        { code: "+33", country: "France" },
+        { code: "+213", country: "Algérie" },
+        { code: "+216", country: "Tunisie" },
+        { code: "+20", country: "Égypte" },
+        { code: "+966", country: "Arabie Saoudite" },
+        { code: "+971", country: "Émirats Arabes Unis" },
+        { code: "+32", country: "Belgique" },
+        { code: "+41", country: "Suisse" },
+        { code: "+34", country: "Espagne" },
+        { code: "+39", country: "Italie" },
+        { code: "+49", country: "Allemagne" },
+        { code: "+44", country: "Royaume-Uni" },
+        { code: "+1", country: "États-Unis/Canada" },
+        { code: "+221", country: "Sénégal" },
+        { code: "+225", country: "Côte d'Ivoire" },
+        { code: "+237", country: "Cameroun" },
+    ]
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -231,17 +252,34 @@ export default function Contact({ lang = "fr" }) {
                                                 placeholder="email@example.com"
                                             />
                                         </div>
-                                        <div className="space-y-2 text-start">
-                                            <label className="text-sm font-bold text-[#538270] dark:text-teal-500 uppercase tracking-wider transition-colors">{t("contactPage.form.phone", lang)}</label>
-                                            <input
-                                                required
-                                                type="tel"
-                                                name="telephone"
-                                                value={formData.telephone}
-                                                onChange={handleChange}
-                                                className="w-full px-6 py-4 bg-white dark:bg-slate-700 rounded-xl border border-[#B4C9B3]/30 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-[#538270] dark:focus:ring-teal-500 transition-all dark:text-white"
-                                                placeholder="+212 ..."
-                                            />
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div className="space-y-2 text-start">
+                                                <label className="text-sm font-bold text-[#538270] dark:text-teal-500 uppercase tracking-wider transition-colors">{t("contactPage.form.countryCode", lang)}</label>
+                                                <select
+                                                    name="countryCode"
+                                                    value={formData.countryCode}
+                                                    onChange={handleChange}
+                                                    className="w-full px-6 py-4 bg-white dark:bg-slate-700 rounded-xl border border-[#B4C9B3]/30 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-[#538270] dark:focus:ring-teal-500 transition-all dark:text-white"
+                                                >
+                                                    {countryCodes.map((item) => (
+                                                        <option key={item.code} value={item.code}>
+                                                            {item.code} {item.country}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                            <div className="space-y-2 text-start">
+                                                <label className="text-sm font-bold text-[#538270] dark:text-teal-500 uppercase tracking-wider transition-colors">{t("contactPage.form.phone", lang)}</label>
+                                                <input
+                                                    required
+                                                    type="tel"
+                                                    name="telephone"
+                                                    value={formData.telephone}
+                                                    onChange={handleChange}
+                                                    className="w-full px-6 py-4 bg-white dark:bg-slate-700 rounded-xl border border-[#B4C9B3]/30 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-[#538270] dark:focus:ring-teal-500 transition-all dark:text-white"
+                                                    placeholder="600000000"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
 

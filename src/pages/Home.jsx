@@ -57,9 +57,21 @@ export default function Home({ lang = "fr" }) {
     const countryCodes = [
         { code: "+212", country: "Maroc" },
         { code: "+33", country: "France" },
+        { code: "+213", country: "Algérie" },
+        { code: "+216", country: "Tunisie" },
+        { code: "+20", country: "Égypte" },
+        { code: "+966", country: "Arabie Saoudite" },
+        { code: "+971", country: "Émirats Arabes Unis" },
+        { code: "+32", country: "Belgique" },
         { code: "+41", country: "Suisse" },
-        { code: "+44", country: "UK" },
-        { code: "+1", country: "USA" },
+        { code: "+34", country: "Espagne" },
+        { code: "+39", country: "Italie" },
+        { code: "+49", country: "Allemagne" },
+        { code: "+44", country: "Royaume-Uni" },
+        { code: "+1", country: "États-Unis/Canada" },
+        { code: "+221", country: "Sénégal" },
+        { code: "+225", country: "Côte d'Ivoire" },
+        { code: "+237", country: "Cameroun" },
     ]
 
     const symptomsIcons = [AlertCircle, Droplet, Activity, Zap, Heart, Users]
@@ -67,7 +79,7 @@ export default function Home({ lang = "fr" }) {
     return (
         <div className="bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
             {/* HERO SECTION - Ultra Creative */}
-            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-10 pb-20">
+            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-10 pb-10">
                 {/* Animated gradient background */}
                 <div className="absolute inset-0 -z-10">
                     <motion.div
@@ -210,7 +222,7 @@ export default function Home({ lang = "fr" }) {
             </section>
 
             {/* WHAT IS LIPEDEMA SECTION - Interactive Cards */}
-            <section className="py-32 px-4 bg-gradient-to-b from-white via-[#F5F1EB]/40 to-white dark:from-slate-900 dark:via-slate-800/40 dark:to-slate-900 relative transition-colors duration-300">
+            <section className="pt-16 pb-32 px-4 bg-gradient-to-b from-white via-[#F5F1EB]/40 to-white dark:from-slate-900 dark:via-slate-800/40 dark:to-slate-900 relative transition-colors duration-300">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -291,7 +303,7 @@ export default function Home({ lang = "fr" }) {
                     >
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">{lang === "fr" ? "Qui sommes-nous ?" : lang === "en" ? "Who are we?" : "من نحن؟"}</h2>
                         <p className="text-xl text-white/90 dark:text-slate-300 max-w-2xl mx-auto transition-colors">
-                            {lang === "fr" ? "Créée en 2025 à Casablanca, fondée par le Dr Fahd Benslimane" : lang === "en" ? "Created in 2025 in Casablanca, founded by Dr. Fahd Benslimane" : "تأسست في 2025 بالدار البيضاء، من قبل الدكتور فهد بنسليمان"}
+                            {lang === "fr" ? "Créée en 2025 à Casablanca" : lang === "en" ? "Created in 2025 in Casablanca" : "تأسست في 2025 بالدار البيضاء"}
                         </p>
                     </motion.div>
 
@@ -353,7 +365,7 @@ export default function Home({ lang = "fr" }) {
                                 transition={{ duration: 4, repeat: Infinity }}
                                 className="w-full h-full flex items-center justify-center p-10"
                             >
-                                <img src={image1} alt="MOSLIPO" className="w-full h-full object-contain" />
+                                <img src={image1} alt="MOSLIPOD" className="w-full h-full object-contain" />
                             </motion.div>
                         </motion.div>
                     </motion.div>
@@ -370,7 +382,7 @@ export default function Home({ lang = "fr" }) {
                         className="text-center mb-12 sm:mb-20"
                     >
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] dark:text-teal-500 mb-6 transition-colors">{t("nav.news", lang)}</h2>
-                        <p className="text-xl text-gray-600 dark:text-slate-400 transition-colors">{lang === "fr" ? "Restez informés des événements et actualités de MOSLIPO" : lang === "en" ? "Stay informed about MOSLIPO events and news" : "ابقوا على اطلاع بأحداث وأخبار MOSLIPO"}</p>
+                        <p className="text-xl text-gray-600 dark:text-slate-400 transition-colors">{lang === "fr" ? "Restez informés des événements et actualités de MOSLIPOD" : lang === "en" ? "Stay informed about MOSLIPOD events and news" : "ابقوا على اطلاع بأحداث وأخبار MOSLIPOD"}</p>
                     </motion.div>
 
                     <motion.div
@@ -382,7 +394,7 @@ export default function Home({ lang = "fr" }) {
                     >
                         {[
                             {
-                                title: lang === "fr" ? "Lancement officiel de MOSLIPO" : lang === "en" ? "Official launch of MOSLIPO" : "الإطلاق الرسمي لـ MOSLIPO",
+                                title: lang === "fr" ? "Lancement officiel de MOSLIPOD" : lang === "en" ? "Official launch of MOSLIPOD" : "الإطلاق الرسمي لـ MOSLIPOD",
                                 date: lang === "fr" ? "Janvier 2025" : lang === "en" ? "January 2025" : "يناير 2025",
                                 excerpt: lang === "fr" ? "La Société Marocaine du Lipœdème annonce officiellement son lancement et ses objectifs ambitieux pour 2025." : lang === "en" ? "The Moroccan Lipedema Society officially announces its launch and ambitious goals for 2025." : "تعلن الجمعية المغربية للوذمة الشحمية رسمياً عن إطلاقها وأهدافها الطموحة لعام 2025.",
                                 color: "from-[#538270] to-[#3d5f52]",

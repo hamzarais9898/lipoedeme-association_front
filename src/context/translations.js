@@ -20,7 +20,7 @@ const translations = {
                 badge: "Recognize • Manage • Raise Awareness",
                 title1: "Recognize",
                 title2: "Lipedema",
-                description: "The Moroccan Lipedema Society works for the recognition, management and awareness of a chronic pathology affecting about 11% of the population, mostly women.",
+                description: "The Moroccan Lipedema Society works for the recognition, management and awareness of a chronic pathology recognized by the WHO since 1945 affecting about 11% of the population, mostly women.",
                 cta1: "Discover Lipedema",
                 cta2: "Who are we?"
             },
@@ -70,7 +70,7 @@ const translations = {
                 title: "Founding Board Members",
                 subtitle: "A team of doctors and experts committed to a multidisciplinary approach",
                 members: [
-                    { name: "Dr Fahd Benslimane", role: "President", specialty: "Plastic Surgeon", desc: "Expert in reconstructive and aesthetic surgery. Initiator of the society, recognized for his commitment to the recognition of lipedema." },
+                    { name: "Dr Fahd Benslimane", role: "President", specialty: "Plastic Surgeon", desc: "Expert in Plastic and aesthetic surgery. Initiator of the society, recognized for his commitment to the recognition of lipedema." },
                     { name: "Pr Jaafar Heikel", role: "Vice-President", specialty: "Nutritionist & Epidemiologist", desc: "University professor, international consultant and health policy expert. Brings a strategic and population vision." },
                     { name: "Pr El Harti Amine", role: "General Secretary", specialty: "Head of Plastic Surgery Department", desc: "Head of department in a university hospital. Contributes to the structuring of clinical protocols and the academic link." },
                     { name: "Dr Karim Benjelloun", role: "Treasurer", specialty: "Anesthesiologist-Resuscitator", desc: "His expertise in anesthesia and therapeutic nutrition strengthens global management." },
@@ -116,8 +116,8 @@ const translations = {
                     { title: "Spontaneous or pressure pain", desc: "Discomfort in affected areas, independent of physical activity" },
                     { title: "Heavy legs sensation", desc: "Persistent tension sensation, even at rest" },
                     { title: "Frequent bruising", desc: "Capillary fragility without obvious trauma" },
-                    { title: "Nodular aspect of adipose tissue", desc: "Particular structure compared to modeling clay" },
-                    { title: "Marked disproportion", desc: "Between the trunk (often thin) and the limbs" },
+                    { title: "Nodular appearance of adipose tissue", desc: "Irregular structure and deformation" },
+                    { title: "Marked disproportion", desc: "Between the trunk (often thin) and the lower and sometimes upper limbs" },
                     { title: "Resistance to diets", desc: "No improvement despite dietary efforts and exercise" }
                 ],
                 psych: {
@@ -277,7 +277,7 @@ const translations = {
                 ]
             },
             cta: {
-                title: "Ready to Join?",
+                title: "Ready to join us?",
                 subtitle: "Contact us for more information on membership modalities and start your journey with us",
                 button1: "Contact Us",
                 button2: "Back to Home"
@@ -334,7 +334,7 @@ const translations = {
                 badge: "Reconnaitre • Prendre en charge • Sensibiliser",
                 title1: "Reconnaitre le",
                 title2: "Lipœdème",
-                description: "La Société Marocaine du Lipœdème œuvre pour la reconnaissance, la prise en charge et la sensibilisation d'une pathologie chronique touchant environ 11% de la population, majoritairement des femmes.",
+                description: "La Société Marocaine du Lipœdème œuvre pour la reconnaissance, la prise en charge et la sensibilisation d'une pathologie chronique reconnue par l’OMS depuis 1945 touchant environ 11% de la population, majoritairement des femmes.",
                 cta1: "Découvrir le Lipœdème",
                 cta2: "Qui sommes-nous ?"
             },
@@ -384,7 +384,7 @@ const translations = {
                 title: "Membres du Bureau Fondateur",
                 subtitle: "Une équipe de médecins et experts engagés dans une approche multidisciplinaire",
                 members: [
-                    { name: "Dr Fahd Benslimane", role: "Président", specialty: "Chirurgien Plasticien", desc: "Expert en chirurgie reconstructrice et esthétique. Initiateur de la société, reconnu pour son engagement dans la reconnaissance du lipœdème." },
+                    { name: "Dr Fahd Benslimane", role: "Président", specialty: "Chirurgien Plasticien", desc: "Expert en chirurgie  plastique et esthétique. Initiateur de la société, reconnu pour son engagement dans la reconnaissance du lipœdème." },
                     { name: "Pr Jaafar Heikel", role: "Vice-Président", specialty: "Nutritionniste & Épidémiologiste", desc: "Professeur d'université, consultant international et expert en politiques de santé. Apporte une vision stratégique et populationnelle." },
                     { name: "Pr El Harti Amine", role: "Secrétaire Général", specialty: "Chef de service Chirurgie Plastique", desc: "Chef de service dans un hôpital universitaire. Contribue à la structuration des protocoles cliniques et au lien académique." },
                     { name: "Dr Karim Benjelloun", role: "Trésorier", specialty: "Anesthésiste-Réanimateur", desc: "Son expertise en anesthésie et alimentation thérapeutique renforce la prise en charge globale." },
@@ -430,8 +430,8 @@ const translations = {
                     { title: "Douleurs spontanées ou à la pression", desc: "Inconfort dans les zones affectées, indépendant de l'activité physique" },
                     { title: "Sensation de jambes lourdes", desc: "Sensation de tension persistante, même au repos" },
                     { title: "Formation fréquente d'ecchymoses", desc: "Fragilité capillaire sans traumatisme évident" },
-                    { title: "Aspect nodulaire du tissu adipeux", desc: "Structure particulière comparée à de la pâte à modeler" },
-                    { title: "Disproportion marquée", desc: "Entre le tronc (souvent mince) et les membres" },
+                    { title: "Aspect nodulaire du tissu adipeux", desc: "Structure irrégulière et déformation" },
+                    { title: "Disproportion marquée", desc: "Entre le tronc (souvent mince) et les membres inférieurs et parfois supérieurs" },
                     { title: "Résistance aux régimes", desc: "Pas d'amélioration malgré les efforts diététiques et l'exercice" }
                 ],
                 psych: {
@@ -591,7 +591,7 @@ const translations = {
                 ]
             },
             cta: {
-                title: "Prêt à Rejoindre ?",
+                title: "Prêt à nous rejoindre ?",
                 subtitle: "Contactez-nous pour obtenir plus d'informations sur les modalités d'adhésion et commencez votre parcours avec nous",
                 button1: "Nous Contacter",
                 button2: "Retour à l'accueil"
@@ -648,7 +648,7 @@ const translations = {
                 badge: "التعريف • التكفل • التوعية",
                 title1: "التعريف بـ",
                 title2: "الوذمة الشحمية",
-                description: "تعمل الجمعية المغربية للوذمة الشحمية على التعريف والتكفل والتوعية بمرض مزمن يصيب حوالي 11% من السكان، معظمهم من النساء.",
+                description: "تعمل الجمعية المغربية للوذمة الشحمية على التعريف والتكفل والتوعية بمرض مزمن معترف به من قبل منظمة الصحة العالمية منذ عام 1945 يصيب حوالي 11% من السكان، معظمهم من النساء.",
                 cta1: "اكتشف الوذمة الشحمية",
                 cta2: "من نحن؟"
             },
@@ -698,7 +698,7 @@ const translations = {
                 title: "أعضاء المكتب التأسيسي",
                 subtitle: "فريق من الأطباء والخبراء الملتزمين بنهج متعدد التخصصات",
                 members: [
-                    { name: "الدكتور فهد بنسليمان", role: "الرئيس", specialty: "جراح تجميل", desc: "خبير في الجراحة الترميمية والتجميلية. مؤسس الجمعية، ومعروف بالتزامه بالتعريف بالوذمة الشحمية." },
+                    { name: "الدكتور فهد بنسليمان", role: "الرئيس", specialty: "جراح تجميل", desc: "خبير في جراحة التجميل والترميم. مؤسس الجمعية، ومعروف بالتزامه بالتعريف بالوذمة الشحمية." },
                     { name: "الأستاذ جعفر هيكل", role: "نائب الرئيس", specialty: "خبير تغذية ووبائيات", desc: "أستاذ جامعي، استشاري دولي وخبير في السياسات الصحية. يقدم رؤية استراتيجية ووبائية." },
                     { name: "الأستاذ الحارتي أمين", role: "الكاتب العام", specialty: "رئيس مصلحة جراحة التجميل", desc: "رئيس مصلحة في مستشفى جامعي. يساهم في هيكلة البروتوكولات السريرية والرابط الأكاديمي." },
                     { name: "الدكتور كريم بنجلون", role: "أمين المال", specialty: "طبيب تخدير وعناية مركزة", desc: "خبرته في التخدير والتغذية العلاجية تعزز التكفل الشامل بالمرضى." },
@@ -744,8 +744,8 @@ const translations = {
                     { title: "آلام تلقائية أو عند الضغط", desc: "انزعاج في المناطق المصابة، بشكل مستقل عن النشاط البدني" },
                     { title: "الشعور بثقل الساقين", desc: "شعور بالتوتر المستمر، حتى في وقت الراحة" },
                     { title: "ظهور كدمات متكررة", desc: "هشاشة الشعيرات الدموية دون تعرض واضح للصدمات" },
-                    { title: "مظهر عقدي للأنسجة الدهنية", desc: "بنية خاصة تشبه معجون اللعب" },
-                    { title: "عدم تناسق واضح", desc: "بين الجذع (الذي غالباً ما يكون نحيفاً) والأطراف" },
+                    { title: "المظهر العُقَدي للنسيج الدهني", desc: "بنية غير منتظمة وتشوه في الشكل" },
+                    { title: "عدم تناسق واضح", desc: "بين الجذع (الذي غالباً ما يكون نحيفاً) والأطراف السفلية وأحياناً العلوية" },
                     { title: "مقاومة الحمية الغذائية", desc: "لا يوجد تحسن رغم الجهود الغذائية وممارسة الرياضة" }
                 ],
                 psych: {
@@ -842,11 +842,11 @@ const translations = {
         membership: {
             hero: {
                 badge: "انضم إلى مجتمعنا",
-                title: "كن عضواً في MOSLIPO",
+                title: "كن عضواً في MOSLIPOD",
                 subtitle: "انضم إلى مجتمعنا من المهنيين الصحيين الملتزمين بالاعتراف بالوذمة الشحمية والبحث فيها والتكفل بها"
             },
             learnMore: "اعرف المزيد",
-            intro: "تفتح MOSLIPO أبوابها للمهنيين الصحيين المغاربة والأجانب الراغبين في الالتزام بالاعتراف بالوذمة الشحمية والبحث فيها والتكفل بها.",
+            intro: "تفتح MOSLIPOD أبوابها للمهنيين الصحيين المغاربة والأجانب الراغبين في الالتزام بالاعتراف بالوذمة الشحمية والبحث فيها والتكفل بها.",
             types: {
                 title: "أنواع العضوية",
                 active: {
@@ -901,11 +901,11 @@ const translations = {
                     { title: "التزكية", desc: "الحصول على دعم عضوين عاملين" },
                     { title: "اللجنة", desc: "فحص طلبك من قبل اللجنة" },
                     { title: "الجمعية العمومية", desc: "التصويت على الانتخاب في الجمعية العمومية" },
-                    { title: "التأكيد", desc: "مرحباً بك كعضو في MOSLIPO!" }
+                    { title: "التأكيد", desc: "مرحباً بك كعضو في MOSLIPOD!" }
                 ]
             },
             cta: {
-                title: "هل أنت مستعد للانضمام؟",
+                title: "هل أنت مستعد للانضمام إلينا؟",
                 subtitle: "اتصل بنا للحصول على مزيد من المعلومات حول إجراءات الانضمام وابدأ رحلتك معنا",
                 button1: "اتصل بنا",
                 button2: "العودة إلى الرئيسية"

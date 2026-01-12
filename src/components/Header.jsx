@@ -27,7 +27,7 @@ export function Header({ currentLang = "fr", onLangChange, isDark, onThemeToggle
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-20">
+                <div className="flex justify-between items-center h-28">
                     {/* Logo */}
                     <Link to="/" className="relative z-50 hover:opacity-95 transition h-full flex items-center">
                         {/* Placeholder to reserve width */}
