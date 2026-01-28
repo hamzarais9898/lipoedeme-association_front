@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users } from "lucide-react"
 import { t } from "../context/translations"
@@ -31,7 +31,6 @@ export default function Home({ lang = "fr" }) {
         newsletter: false,
     })
 
-    const { scrollY } = useScroll()
 
     useEffect(() => {
         setMounted(true)
