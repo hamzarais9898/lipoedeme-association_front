@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
-import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import image1 from "../assets/images/logo1.png"
 
 export function Header({ currentLang = "fr", onLangChange }) {

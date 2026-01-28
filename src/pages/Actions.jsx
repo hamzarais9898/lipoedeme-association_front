@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Users, BookOpen, Volume2, CheckCircle2, ArrowRight, Zap } from "lucide-react"
+import { Users, CheckCircle2, ArrowRight, Zap } from "lucide-react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
 
-const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-}
 
 const scaleIn = {
     initial: { opacity: 0, scale: 0.95 },

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users } from "lucide-react"
 import { t } from "../context/translations"
 import image1 from "../assets/images/logo1.png"
-import image2 from "../assets/images/logo2.png"
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +32,6 @@ export default function Home({ lang = "fr" }) {
     })
 
     const { scrollY } = useScroll()
-    const videoScale = useTransform(scrollY, [0, 300], [1, 0.95])
 
     useEffect(() => {
         setMounted(true)

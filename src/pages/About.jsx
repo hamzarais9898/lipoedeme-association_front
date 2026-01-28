@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Download, Users, Target, Lightbulb, BookOpen, Award, Globe, ArrowRight, FileText } from "lucide-react"
+import { Users, Target, Lightbulb, BookOpen, Award, Globe, ArrowRight, FileText } from "lucide-react"
 import { t } from "../context/translations"
 
 const containerVariants = {
