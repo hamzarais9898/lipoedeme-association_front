@@ -24,25 +24,25 @@ export default function Adhesion({ lang = "fr" }) {
         {
             key: "active",
             icon: Users,
-            gradient: "from-[#538270] to-[#3d5f52] dark:from-teal-700 dark:to-teal-900",
+            gradient: "from-[#538270] to-[#3d5f52]",
             icon_bg: "bg-white/15",
         },
         {
             key: "candidate",
             icon: Award,
-            gradient: "from-[#B4C9B3] to-[#92a99a] dark:from-teal-600 dark:to-teal-800",
+            gradient: "from-[#B4C9B3] to-[#92a99a]",
             icon_bg: "bg-white/20",
         },
         {
             key: "honorary",
             icon: Heart,
-            gradient: "from-[#538270] to-[#2d4a3d] dark:from-teal-800 dark:to-teal-950",
+            gradient: "from-[#538270] to-[#2d4a3d]",
             icon_bg: "bg-white/15",
         },
         {
             key: "foreign",
             icon: Globe,
-            gradient: "from-[#B4C9B3] to-[#6b9a8a] dark:from-teal-500 dark:to-teal-700",
+            gradient: "from-[#B4C9B3] to-[#6b9a8a]",
             icon_bg: "bg-white/20",
         }
     ]
@@ -50,9 +50,9 @@ export default function Adhesion({ lang = "fr" }) {
     const stepIcons = [FileText, Users, ClipboardCheck, Vote, PartyPopper]
 
     return (
-        <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+        <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
             {/* Page Header / Hero Area */}
-            <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 transition-colors">
+            <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none text-start">
                     <motion.div
                         animate={{
@@ -72,7 +72,7 @@ export default function Adhesion({ lang = "fr" }) {
 
                 <div className="relative max-w-5xl mx-auto text-center z-10 font-dir">
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="mb-6">
-                        <span className="px-4 py-2 bg-[#B4C9B3]/20 dark:bg-teal-900/30 text-[#538270] dark:text-teal-400 rounded-full text-sm font-semibold transition-colors">
+                        <span className="px-4 py-2 bg-[#B4C9B3]/20 text-[#538270] rounded-full text-sm font-semibold transition-colors">
                             {t("membership.hero.badge", lang)}
                         </span>
                     </motion.div>
@@ -81,7 +81,7 @@ export default function Adhesion({ lang = "fr" }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl sm:text-7xl font-bold text-[#538270] dark:text-teal-500 mb-6 leading-tight transition-colors"
+                        className="text-5xl sm:text-7xl font-bold text-[#538270] mb-6 leading-tight transition-colors"
                     >
                         {t("membership.hero.title", lang)}
                     </motion.h1>
@@ -90,7 +90,7 @@ export default function Adhesion({ lang = "fr" }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed transition-colors"
+                        className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed transition-colors"
                     >
                         {t("membership.hero.subtitle", lang)}
                     </motion.p>
@@ -98,7 +98,7 @@ export default function Adhesion({ lang = "fr" }) {
             </section>
 
             {/* Member Types Grid */}
-            <section className="py-24 px-4 bg-[#F5F1EB] dark:bg-slate-800 transition-colors">
+            <section className="py-24 px-4 bg-[#F5F1EB] transition-colors">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ export default function Adhesion({ lang = "fr" }) {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl font-bold text-[#538270] dark:text-teal-500 mb-6 transition-colors">{t("membership.types.title", lang)}</h2>
+                        <h2 className="text-4xl font-bold text-[#538270] mb-6 transition-colors">{t("membership.types.title", lang)}</h2>
                     </motion.div>
 
                     <motion.div
@@ -193,20 +193,20 @@ export default function Adhesion({ lang = "fr" }) {
             </section>
 
             {/* Process Section */}
-            <section className="py-24 px-4 bg-white dark:bg-slate-900 transition-colors">
+            <section className="py-24 px-4 bg-white transition-colors">
                 <div className="max-w-5xl mx-auto">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-[#538270] dark:text-teal-500 text-center mb-20 transition-colors"
+                        className="text-4xl md:text-5xl font-bold text-[#538270] text-center mb-20 transition-colors"
                     >
                         {t("membership.process.title", lang)}
                     </motion.h2>
 
                     <div className="relative font-dir">
                         {/* Timeline connector line */}
-                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#538270] to-[#B4C9B3] dark:from-teal-600 dark:to-teal-400 transform -translate-x-1/2 transition-colors" />
+                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#538270] to-[#B4C9B3] transform -translate-x-1/2 transition-colors" />
 
                         <div className="space-y-12">
                             {t("membership.process.steps", lang).map((item, i) => {
@@ -218,52 +218,42 @@ export default function Adhesion({ lang = "fr" }) {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.1 }}
-                                        className="relative flex items-center justify-between mb-8 md:mb-12"
+                                        className="relative flex items-center justify-between mb-12 md:mb-16"
                                     >
-                                        {/* Left Side (Content for even, empty for odd) */}
-                                        <div className={`w-full md:w-[45%] ${i % 2 === 0 ? "text-right pr-0 md:pr-8 mx-auto md:mx-0 order-2 md:order-1" : "hidden md:block md:order-1"}`}>
+                                        {/* Left Side (Desktop: Even items) */}
+                                        <div className={`hidden md:block w-full md:w-[45%] ${i % 2 === 0 ? "text-right pr-8 order-1" : "order-1"}`}>
                                             {i % 2 === 0 && (
-                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all">
+                                                <div className="bg-white p-8 rounded-xl border border-[#B4C9B3] shadow-md hover:shadow-xl transition-all">
                                                     <div className="flex justify-end mb-3">
-                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
+                                                        <Icon size={32} className="text-[#538270]" />
                                                     </div>
-                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
-                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
+                                                    <h3 className="text-2xl font-bold text-[#538270] mb-2 transition-colors">{item.title}</h3>
+                                                    <p className="text-gray-700 leading-relaxed transition-colors">{item.desc}</p>
                                                 </div>
                                             )}
                                         </div>
 
-                                        {/* Center Marker */}
-                                        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 flex flex-col items-center z-10 top-0 h-full">
+                                        {/* Center Marker (Consistent on Mobile, Centered on Desktop) */}
+                                        <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex flex-col items-center z-10 top-0 h-full">
                                             <motion.div
                                                 whileHover={{ scale: 1.2, rotate: 10 }}
-                                                className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#538270] to-[#3d5f52] dark:from-teal-600 dark:to-teal-800 text-white font-bold text-lg md:text-xl shadow-lg"
+                                                className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#538270] to-[#3d5f52] text-white font-bold text-lg md:text-xl shadow-lg border-4 border-white"
                                             >
                                                 {i + 1}
                                             </motion.div>
                                         </div>
 
-                                        {/* Right Side (Content for odd, empty for even) */}
-                                        <div className={`w-full md:w-[45%] pl-16 md:pl-8 ${i % 2 !== 0 ? "text-left md:order-3 mx-auto md:mx-0" : "hidden md:block md:order-3"}`}>
-                                            {i % 2 !== 0 && (
-                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all">
+                                        {/* Right Side (Desktop: Odd items | Mobile: All items) */}
+                                        <div className={`w-full md:w-[45%] pl-16 md:pl-8 ${i % 2 !== 0 ? "md:order-3" : "md:order-3"}`}>
+                                            <div className={`${i % 2 === 0 ? "md:hidden" : ""} block`}>
+                                                <div className="bg-white p-6 md:p-8 rounded-xl border border-[#B4C9B3] shadow-md hover:shadow-xl transition-all text-left">
                                                     <div className="flex justify-start mb-3">
-                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
+                                                        <Icon size={32} className="text-[#538270]" />
                                                     </div>
-                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
-                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
+                                                    <h3 className="text-2xl font-bold text-[#538270] mb-2 transition-colors">{item.title}</h3>
+                                                    <p className="text-gray-700 leading-relaxed transition-colors text-sm md:text-base">{item.desc}</p>
                                                 </div>
-                                            )}
-                                            {/* Mobile layout for Even items (render on right/full width but pushed by padding) */}
-                                            {i % 2 === 0 && <div className="md:hidden block">
-                                                <div className="bg-white dark:bg-slate-700 p-8 rounded-xl border border-[#B4C9B3] dark:border-slate-600 shadow-md hover:shadow-xl transition-all text-left">
-                                                    <div className="flex justify-start mb-3">
-                                                        <Icon size={32} className="text-[#538270] dark:text-teal-400" />
-                                                    </div>
-                                                    <h3 className="text-2xl font-bold text-[#538270] dark:text-teal-400 mb-2 transition-colors">{item.title}</h3>
-                                                    <p className="text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{item.desc}</p>
-                                                </div>
-                                            </div>}
+                                            </div>
                                         </div>
                                     </motion.div>
                                 )
@@ -274,7 +264,7 @@ export default function Adhesion({ lang = "fr" }) {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 px-4 relative overflow-hidden bg-[#F5F1EB] dark:bg-slate-800 transition-colors">
+            <section className="py-20 px-4 relative overflow-hidden bg-[#F5F1EB] transition-colors">
                 <motion.div
                     animate={{
                         scale: [1, 1.25, 1],
@@ -289,7 +279,7 @@ export default function Adhesion({ lang = "fr" }) {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-[#538270] dark:text-teal-500 mb-6 transition-colors"
+                        className="text-4xl md:text-5xl font-bold text-[#538270] mb-6 transition-colors"
                     >
                         {t("membership.cta.title", lang)}
                     </motion.h2>
@@ -299,7 +289,7 @@ export default function Adhesion({ lang = "fr" }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg text-gray-700 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed transition-colors"
+                        className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed transition-colors"
                     >
                         {t("membership.cta.subtitle", lang)}
                     </motion.p>
@@ -313,13 +303,13 @@ export default function Adhesion({ lang = "fr" }) {
                     >
                         <Link
                             to="/contact"
-                            className="px-8 py-4 bg-[#538270] dark:bg-teal-600 text-white rounded-lg hover:bg-[#3d5f52] transition-all font-bold shadow-lg hover:shadow-xl text-center"
+                            className="px-8 py-4 bg-[#538270] text-white rounded-lg hover:bg-[#3d5f52] transition-all font-bold shadow-lg hover:shadow-xl text-center"
                         >
                             {t("membership.cta.button1", lang)}
                         </Link>
                         <Link
                             to="/"
-                            className="px-8 py-4 border-2 border-[#538270] dark:border-teal-500 text-[#538270] dark:text-teal-400 rounded-lg hover:bg-[#538270]/10 transition-all font-bold text-center"
+                            className="px-8 py-4 border-2 border-[#538270] text-[#538270] rounded-lg hover:bg-[#538270]/10 transition-all font-bold text-center"
                         >
                             {t("membership.cta.button2", lang)}
                         </Link>

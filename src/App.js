@@ -11,32 +11,16 @@ import Contact from './pages/Contact';
 
 function App() {
   const [lang, setLang] = useState('fr');
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  });
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
 
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const toggleTheme = () => setIsDark(!isDark);
-
   return (
     <Router>
-      <div className={`flex flex-col min-h-screen transition-colors duration-300 ${isDark ? 'bg-slate-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-        <Header currentLang={lang} onLangChange={setLang} isDark={isDark} onThemeToggle={toggleTheme} />
+      <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+        <Header currentLang={lang} onLangChange={setLang} />
         <main className="flex-grow pt-24 w-full">
           <Routes>
             <Route path="/" element={<Home lang={lang} />} />

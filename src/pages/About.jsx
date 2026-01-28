@@ -38,9 +38,9 @@ export default function About({ lang = "fr" }) {
     ]
 
     return (
-        <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+        <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
             {/* Page Header / Hero */}
-            <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 transition-colors">
+            <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 {/* Animated background */}
                 <motion.div
                     animate={{
@@ -63,7 +63,7 @@ export default function About({ lang = "fr" }) {
 
                 <div className="relative max-w-5xl mx-auto text-center z-10">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 inline-block">
-                        <span className="px-4 py-2 bg-[#B4C9B3]/20 dark:bg-teal-900/30 text-[#538270] dark:text-teal-400 rounded-full text-sm font-semibold transition-colors">
+                        <span className="px-4 py-2 bg-[#B4C9B3]/20 text-[#538270] rounded-full text-sm font-semibold transition-colors">
                             {t("about.hero.badge", lang)}
                         </span>
                     </motion.div>
@@ -72,7 +72,7 @@ export default function About({ lang = "fr" }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl sm:text-7xl font-bold text-[#538270] dark:text-teal-500 mb-6 leading-tight transition-colors"
+                        className="text-5xl sm:text-7xl font-bold text-[#538270] mb-6 leading-tight transition-colors"
                     >
                         {t("about.hero.title", lang)}
                     </motion.h1>
@@ -81,7 +81,7 @@ export default function About({ lang = "fr" }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed transition-colors"
+                        className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed transition-colors"
                     >
                         {t("about.hero.subtitle", lang)}
                     </motion.p>
@@ -89,15 +89,15 @@ export default function About({ lang = "fr" }) {
             </section>
 
             {/* Genesis Section */}
-            <section className="py-24 px-4 bg-white dark:bg-slate-900 transition-colors">
+            <section className="py-24 px-4 bg-white transition-colors">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-4xl font-bold text-[#538270] dark:text-teal-500 mb-8 transition-colors">{t("about.genesis.title", lang)}</h2>
-                        <div className="space-y-6 text-lg text-gray-700 dark:text-slate-300 transition-colors leading-relaxed">
+                        <h2 className="text-4xl font-bold text-[#538270] mb-8 transition-colors">{t("about.genesis.title", lang)}</h2>
+                        <div className="space-y-6 text-lg text-gray-700 transition-colors leading-relaxed">
                             {t("about.genesis.content", lang).map((para, i) => (
                                 <p key={i}>{para}</p>
                             ))}
@@ -108,7 +108,7 @@ export default function About({ lang = "fr" }) {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative h-80 sm:h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-[#B4C9B3] to-[#538270] dark:from-teal-700 dark:to-teal-900 p-8 flex flex-col items-center justify-center shadow-2xl transition-colors"
+                        className="relative h-80 sm:h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-[#B4C9B3] to-[#538270] p-8 flex flex-col items-center justify-center shadow-2xl transition-colors"
                     >
                         <motion.div
                             animate={{ rotate: 360 }}
@@ -186,8 +186,8 @@ export default function About({ lang = "fr" }) {
                         viewport={{ once: true }}
                         className="text-center mb-16 sm:mb-20"
                     >
-                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] dark:text-teal-500 mb-6 transition-colors">{t("about.team.title", lang)}</h2>
-                        <p className="text-lg sm:text-xl text-gray-600 dark:text-slate-400 max-w-2xl mx-auto transition-colors">
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] mb-6 transition-colors">{t("about.team.title", lang)}</h2>
+                        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto transition-colors">
                             {t("about.team.subtitle", lang)}
                         </p>
                     </motion.div>
@@ -219,9 +219,9 @@ export default function About({ lang = "fr" }) {
                                 </div>
 
                                 <div className="p-6 space-y-3">
-                                    <h3 className="text-xl font-bold text-[#538270] dark:text-teal-500 leading-snug transition-colors">{member.name}</h3>
-                                    <p className="text-sm font-semibold text-[#B4C9B3] dark:text-teal-400 uppercase tracking-wider transition-colors">{member.specialty}</p>
-                                    <p className="text-sm text-gray-700 dark:text-slate-300 leading-relaxed transition-colors">{member.desc}</p>
+                                    <h3 className="text-xl font-bold text-[#538270] leading-snug transition-colors">{member.name}</h3>
+                                    <p className="text-sm font-semibold text-[#B4C9B3] uppercase tracking-wider transition-colors">{member.specialty}</p>
+                                    <p className="text-sm text-gray-700 leading-relaxed transition-colors">{member.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -230,13 +230,13 @@ export default function About({ lang = "fr" }) {
             </section>
 
             {/* Statuts Section */}
-            <section className="py-24 px-4 bg-[#F5F1EB] dark:bg-slate-800 transition-colors">
+            <section className="py-24 px-4 bg-[#F5F1EB] transition-colors">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl font-bold text-[#538270] dark:text-teal-500 mb-8 transition-colors"
+                        className="text-4xl font-bold text-[#538270] mb-8 transition-colors"
                     >
                         {t("about.stats.title", lang)}
                     </motion.h2>
@@ -245,12 +245,12 @@ export default function About({ lang = "fr" }) {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
-                        className="bg-white dark:bg-slate-700 p-12 rounded-3xl shadow-xl border border-[#B4C9B3]/30 dark:border-slate-600 transition-colors"
+                        className="bg-white p-12 rounded-3xl shadow-xl border border-[#B4C9B3]/30 transition-colors"
                     >
-                        <p className="text-xl text-gray-700 dark:text-slate-200 leading-relaxed mb-10 transition-colors">
+                        <p className="text-xl text-gray-700 leading-relaxed mb-10 transition-colors">
                             {t("about.stats.description", lang)}
                         </p>
-                        <button className="px-10 py-4 bg-[#538270] dark:bg-teal-600 text-white rounded-xl font-bold text-lg hover:shadow-2xl transition-all flex items-center gap-3 mx-auto group">
+                        <button className="px-10 py-4 bg-[#538270] text-white rounded-xl font-bold text-lg hover:shadow-2xl transition-all flex items-center gap-3 mx-auto group">
                             <FileText size={24} />
                             {t("about.stats.cta", lang)}
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -268,8 +268,8 @@ export default function About({ lang = "fr" }) {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] dark:text-teal-500 transition-colors">{t("about.cta.title", lang)}</h2>
-                        <p className="text-lg sm:text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed transition-colors">
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] transition-colors">{t("about.cta.title", lang)}</h2>
+                        <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed transition-colors">
                             {t("about.cta.subtitle", lang)}
                         </p>
 
