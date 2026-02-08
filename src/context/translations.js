@@ -72,7 +72,7 @@ const translations = {
                 members: [
                     { name: "Dr Fahd Benslimane", role: "President", specialty: "Plastic Surgeon", desc: "Expert in Plastic and aesthetic surgery. Initiator of the society, recognized for his commitment to the recognition of lipedema." },
                     { name: "Pr Jaafar Heikel", role: "Vice-President", specialty: "Nutritionist & Epidemiologist", desc: "University professor, international consultant and health policy expert. Brings a strategic and population vision." },
-                    { name: "Pr El Harti Amine", role: "General Secretary", specialty: "Head of Plastic Surgery Department", desc: "Head of department in a university hospital. Contributes to the structuring of clinical protocols and the academic link." },
+                    { name: "Pr El Harti Amine", role: "General Secretary", specialty: "Associate Professor in Plastic and Aesthetic Surgery", desc: "Expert at the Faculty of Medicine of Casablanca. Member of the National Expert Group for specialized training. Contributes to clinical protocols and academic links." },
                     { name: "Dr Karim Benjelloun", role: "Treasurer", specialty: "Anesthesiologist-Resuscitator", desc: "His expertise in anesthesia and therapeutic nutrition strengthens global management." },
                     { name: "Dr Raghni Salwa", role: "Assessor 1", specialty: "General Practitioner", desc: "In charge of early detection and diagnostic guidance for patients in first-line care." },
                     { name: "Dr Belmallem Imane", role: "Assessor 2", specialty: "Pulmonologist & Allergist", desc: "Specialized in respiratory and inflammatory disorders. Contributes to the analysis of associated comorbidities." },
@@ -386,7 +386,7 @@ const translations = {
                 members: [
                     { name: "Dr Fahd Benslimane", role: "Président", specialty: "Chirurgien Plasticien", desc: "Expert en chirurgie  plastique et esthétique. Initiateur de la société, reconnu pour son engagement dans la reconnaissance du lipœdème." },
                     { name: "Pr Jaafar Heikel", role: "Vice-Président", specialty: "Nutritionniste & Épidémiologiste", desc: "Professeur d'université, consultant international et expert en politiques de santé. Apporte une vision stratégique et populationnelle." },
-                    { name: "Pr El Harti Amine", role: "Secrétaire Général", specialty: "Chef de service Chirurgie Plastique", desc: "Chef de service dans un hôpital universitaire. Contribue à la structuration des protocoles cliniques et au lien académique." },
+                    { name: "Pr El Harti Amine", role: "Secrétaire Général", specialty: "Professeur Agrégé en chirurgie plastique et esthétique", desc: "Enseignant à la faculté de Médecine de Casablanca. Membre du Groupe d’experts National pour la formation de spécialisation. Contribue à la structuration des protocoles cliniques et au lien académique." },
                     { name: "Dr Karim Benjelloun", role: "Trésorier", specialty: "Anesthésiste-Réanimateur", desc: "Son expertise en anesthésie et alimentation thérapeutique renforce la prise en charge globale." },
                     { name: "Dr Raghni Salwa", role: "Assesseur 1", specialty: "Médecin Généraliste", desc: "En charge du repérage précoce et de l'orientation diagnostique des patientes en première ligne de soins." },
                     { name: "Dr Belmallem Imane", role: "Assesseur 2", specialty: "Pneumologue & Allergologue", desc: "Spécialisée dans les troubles respiratoires et inflammatoires. Contribue à l'analyse des comorbidités associées." },
@@ -700,7 +700,7 @@ const translations = {
                 members: [
                     { name: "الدكتور فهد بنسليمان", role: "الرئيس", specialty: "جراح تجميل", desc: "خبير في جراحة التجميل والترميم. مؤسس الجمعية، ومعروف بالتزامه بالتعريف بالوذمة الشحمية." },
                     { name: "الأستاذ جعفر هيكل", role: "نائب الرئيس", specialty: "خبير تغذية ووبائيات", desc: "أستاذ جامعي، استشاري دولي وخبير في السياسات الصحية. يقدم رؤية استراتيجية ووبائية." },
-                    { name: "الأستاذ الحارتي أمين", role: "الكاتب العام", specialty: "رئيس مصلحة جراحة التجميل", desc: "رئيس مصلحة في مستشفى جامعي. يساهم في هيكلة البروتوكولات السريرية والرابط الأكاديمي." },
+                    { name: "الأستاذ الحارتي أمين", role: "الكاتب العام", specialty: "أستاذ مبرز في جراحة التجميل والترميم", desc: "بكلية الطب بالدار البيضاء. عضو في الفريق الوطني للخبراء لتكوين التخصص. يساهم في هيكلة البروتوكولات السريرية والرابط الأكاديمي." },
                     { name: "الدكتور كريم بنجلون", role: "أمين المال", specialty: "طبيب تخدير وعناية مركزة", desc: "خبرته في التخدير والتغذية العلاجية تعزز التكفل الشامل بالمرضى." },
                     { name: "الدكتورة رغني سلوى", role: "المستشار 1", specialty: "طب عام", desc: "مسؤولة عن الكشف المبكر والتشخيص للمريضات في الخط الأول من الرعاية." },
                     { name: "الدكتورة بلمعلم إيمان", role: "المستشار 2", specialty: "طبيبة أمراض صدرية وحساسية", desc: "متخصصة في الاضطرابات التنفسية والالتهابية. تساهم في تحليل الأمراض المصاحبة." },
