@@ -13,7 +13,7 @@ function App() {
   const [lang, setLang] = useState('fr');
 
   useEffect(() => {
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
 

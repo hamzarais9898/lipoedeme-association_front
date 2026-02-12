@@ -21,6 +21,7 @@ export function Header({ currentLang = "fr", onLangChange }) {
 
     return (
         <header
+            dir="ltr"
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
                 ? "bg-white shadow-lg"
                 : "bg-white/95 backdrop-blur"
@@ -40,30 +41,32 @@ export function Header({ currentLang = "fr", onLangChange }) {
                     </Link>
 
                     {/* Navigation - Desktop */}
-                    <nav className="hidden lg:flex gap-6">
+                    <nav className="hidden lg:flex gap-8 xl:gap-10">
                         {navKeys.map(
                             (key) =>
                                 key !== "contact" && (
                                     <Link
                                         key={key}
                                         to={`/${key === "home" ? "" : key}`}
-                                        className="transition-colors font-medium text-sm whitespace-nowrap text-gray-700 hover:text-[#538270]"
+                                        className="transition-colors font-semibold text-[13px] uppercase tracking-wide whitespace-nowrap text-gray-700 hover:text-[#538270]"
                                     >
-                                        {t(`nav.${key}`, currentLang).toUpperCase()}
+                                        {t(`nav.${key}`, currentLang)}
                                     </Link>
                                 ),
                         )}
                     </nav>
 
                     {/* Right side tools */}
-                    <div className="flex items-center gap-2 sm:gap-4">
+                    <div className="flex items-center gap-3 sm:gap-6">
                         {/* Language Selector */}
                         <div className="relative group hidden sm:block">
-                            <button className="flex items-center gap-1 px-3 py-2 rounded-lg transition font-medium text-sm text-[#538270] hover:bg-[#F5F1EB]">
+                            <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition font-semibold text-sm text-[#538270] hover:bg-[#F5F1EB]">
                                 {currentLang.toUpperCase()}
-                                <ChevronDown size={16} />
+                                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
                             </button>
-                            <div className="absolute right-0 top-full mt-1 rounded-lg shadow-lg hidden group-hover:block border min-w-[80px] bg-white border-[#B4C9B3] text-[#538270]">
+                            {/* Invisible bridge with no gap to ensure hover persistence */}
+                            <div className="absolute left-0 right-0 h-4 top-full" />
+                            <div className="absolute right-0 top-full rounded-xl shadow-xl hidden group-hover:block border min-w-[110px] bg-white border-[#B4C9B3]/30 overflow-hidden text-[#538270] animate-in fade-in slide-in-from-top-1 duration-200">
                                 {languages.map((lang) => (
                                     <button
                                         key={lang}
@@ -73,7 +76,7 @@ export function Header({ currentLang = "fr", onLangChange }) {
                                                 setIsOpen(false);
                                             }
                                         }}
-                                        className="w-full text-left block px-4 py-2 first:rounded-t-lg last:rounded-b-lg font-medium text-sm transition-colors hover:bg-[#F5F1EB]"
+                                        className="w-full text-left block px-5 py-2.5 first:rounded-t-lg last:rounded-b-lg font-medium text-sm transition-colors hover:bg-[#F5F1EB]"
                                     >
                                         {lang.toUpperCase()}
                                     </button>
@@ -84,9 +87,9 @@ export function Header({ currentLang = "fr", onLangChange }) {
                         {/* Contact Button - Desktop */}
                         <Link
                             to="/contact"
-                            className="hidden sm:block px-4 py-2 rounded-lg transition-colors font-medium text-sm bg-[#538270] text-white hover:bg-[#3d5f52]"
+                            className="hidden sm:block px-6 py-2.5 rounded-lg transition-all font-semibold text-sm bg-[#538270] text-white hover:bg-[#3d5f52] shadow-sm hover:shadow-md"
                         >
-                            {t("nav.contact", currentLang)}
+                            {t("nav.contact", currentLang).toUpperCase()}
                         </Link>
 
                         {/* Burger Menu Button */}
