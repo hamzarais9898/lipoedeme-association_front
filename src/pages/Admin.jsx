@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Lock, User, LogIn, Users, Download, Search, LayoutDashboard, Mail, Send, X, ChevronDown, Eye } from "lucide-react"
+import { Lock, User, LogIn, Users, Download, Search, LayoutDashboard, Mail, Send, X, ChevronDown, Eye, Trash2 } from "lucide-react"
 
 export default function Admin() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -192,6 +192,28 @@ export default function Admin() {
         }
     }
 
+    const handleDelete = async (id, email) => {
+        if (!window.confirm(`Êtes-vous sûr de vouloir supprimer ${email} de la newsletter ?`)) return;
+
+        const token = localStorage.getItem("adminToken");
+        try {
+            const res = await fetch(`http://localhost:5000/api/admin/subscribers/${id}`, {
+                method: "DELETE",
+                headers: { "Authorization": token }
+            });
+
+            if (res.ok) {
+                setSubscribers(subscribers.filter(sub => sub._id !== id));
+                alert("Abonné supprimé avec succès.");
+            } else {
+                alert("Erreur lors de la suppression.");
+            }
+        } catch (err) {
+            console.error("Failed to delete", err);
+            alert("Erreur serveur.");
+        }
+    }
+
     const filteredSubscribers = subscribers.filter(sub =>
         sub.email.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -221,12 +243,12 @@ export default function Admin() {
                         <div className="w-16 h-16 bg-[#538270]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                             <Lock className="text-[#538270]" size={32} />
                         </div>
-                        <h1 className="text-2xl font-bold text-gray-900">Admin Login</h1>
-                        <p className="text-gray-500 mt-2">Secure access restricted to administrators</p>
+                        <h1 className="text-2xl font-bold text-gray-900">Connexion Admin</h1>
+                        <p className="text-gray-500 mt-2">Accès sécurisé pour les administrateurs</p>
                     </div>
                     <form onSubmit={handleLogin} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Utilisateur</label>
                             <div className="relative">
                                 <User className="absolute left-3 top-3 text-gray-400" size={20} />
                                 <input
@@ -239,7 +261,7 @@ export default function Admin() {
                             </div>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-3 text-gray-400" size={20} />
                                 <input
@@ -261,7 +283,7 @@ export default function Admin() {
                             disabled={loading}
                             className="w-full py-4 bg-[#538270] text-white rounded-xl font-bold hover:bg-[#3d5f52] transition-colors flex items-center justify-center gap-2"
                         >
-                            {loading ? "Verifying..." : (<><LogIn size={20} /> Access Dashboard</>)}
+                            {loading ? "Vérification..." : (<><LogIn size={20} /> Accéder au tableau de bord</>)}
                         </button>
                     </form>
                 </motion.div>
@@ -277,16 +299,16 @@ export default function Admin() {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
                             <LayoutDashboard className="text-[#538270]" />
-                            Newsletter Dashboard
+                            Tableau de Bord Newsletter
                         </h1>
-                        <p className="text-gray-500 mt-1">Manage, Track, and Contact Researchers</p>
+                        <p className="text-gray-500 mt-1">Gérer, Suivre et Contacter les Abonnés</p>
                     </div>
                     <div className="flex items-center gap-4">
                         <button
                             onClick={logout}
                             className="px-4 py-2 text-gray-600 hover:text-gray-900 font-medium transition-colors"
                         >
-                            Log Out
+                            Déconnexion
                         </button>
                     </div>
                 </div>
@@ -298,7 +320,7 @@ export default function Admin() {
                             <Users size={24} />
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500 font-medium">Total Subscribers</p>
+                            <p className="text-sm text-gray-500 font-medium">Total Abonnés</p>
                             <p className="text-2xl font-bold text-gray-900">{subscribers.length}</p>
                         </div>
                     </div>
@@ -308,7 +330,7 @@ export default function Admin() {
                             <Mail size={24} />
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500 font-medium">Total Emails Sent</p>
+                            <p className="text-sm text-gray-500 font-medium">Total Emails Envoyés</p>
                             <p className="text-2xl font-bold text-gray-900">
                                 {subscribers.reduce((acc, curr) => acc + (curr.emailCount || 0), 0)}
                             </p>
@@ -320,8 +342,8 @@ export default function Admin() {
                         className="bg-[#538270] hover:bg-[#3d5f52] p-6 rounded-2xl shadow-lg shadow-[#538270]/20 flex items-center justify-between group transition-all"
                     >
                         <div className="text-left">
-                            <p className="text-white/80 font-medium mb-1">Quick Action</p>
-                            <p className="text-2xl font-bold text-white">Send Bulk Email</p>
+                            <p className="text-white/80 font-medium mb-1">Action Rapide</p>
+                            <p className="text-2xl font-bold text-white">Envoyer Email Groupé</p>
                         </div>
                         <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
                             <Send className="text-white" size={24} />
@@ -336,7 +358,7 @@ export default function Admin() {
                             <Search className="absolute left-3 top-3 text-gray-400" size={20} />
                             <input
                                 type="text"
-                                placeholder="Search email..."
+                                placeholder="Rechercher un email..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#538270]/20"
@@ -347,7 +369,7 @@ export default function Admin() {
                             className="flex items-center gap-2 px-4 py-2 bg-[#F5F1EB] text-[#538270] rounded-xl font-bold hover:bg-[#e8e2d8] transition-colors"
                         >
                             <Download size={18} />
-                            Export CSV
+                            Exporter CSV
                         </button>
                     </div>
 
@@ -355,10 +377,10 @@ export default function Admin() {
                         <table className="w-full text-left">
                             <thead className="bg-gray-50/50">
                                 <tr>
-                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Email Address</th>
-                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Joined</th>
-                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500 text-center">Emails Sent</th>
-                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Last Contact</th>
+                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Adresse Email</th>
+                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Inscrit le</th>
+                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500 text-center">Emails Envoyés</th>
+                                    <th className="px-6 py-4 text-sm font-semibold text-gray-500">Dernier Contact</th>
                                     <th className="px-6 py-4 text-sm font-semibold text-gray-500 text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -376,15 +398,22 @@ export default function Admin() {
                                                 </span>
                                             </td>
                                             <td className="px-6 py-4 text-sm text-gray-500">
-                                                {sub.lastEmailSentAt ? new Date(sub.lastEmailSentAt).toLocaleDateString() : 'Never'}
+                                                {sub.lastEmailSentAt ? new Date(sub.lastEmailSentAt).toLocaleDateString() : 'Jamais'}
                                             </td>
                                             <td className="px-6 py-4 text-right">
                                                 <button
                                                     onClick={() => openEmailModal([sub.email])}
-                                                    className="p-2 text-gray-400 hover:text-[#538270] hover:bg-[#538270]/10 rounded-lg transition-colors"
-                                                    title="Send Email"
+                                                    className="p-2 text-gray-400 hover:text-[#538270] hover:bg-[#538270]/10 rounded-lg transition-colors mr-2"
+                                                    title="Envoyer un email"
                                                 >
                                                     <Mail size={18} />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(sub._id, sub.email)}
+                                                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                    title="Supprimer l'abonné"
+                                                >
+                                                    <Trash2 size={18} />
                                                 </button>
                                             </td>
                                         </tr>
@@ -392,7 +421,7 @@ export default function Admin() {
                                 ) : (
                                     <tr>
                                         <td colSpan="5" className="px-6 py-12 text-center text-gray-500">
-                                            No subscribers found matching your search.
+                                            Aucun abonné trouvé.
                                         </td>
                                     </tr>
                                 )}
@@ -422,9 +451,9 @@ export default function Admin() {
                             <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50">
                                 <h3 className="font-bold text-lg text-gray-900 flex items-center gap-2">
                                     <Send size={20} className="text-[#538270]" />
-                                    Compose Email
+                                    Rédiger un Email
                                     <span className="text-sm font-normal text-gray-500 ml-2">
-                                        (To {emailRecipients.length} recipients)
+                                        (À {emailRecipients.length} destinataires)
                                     </span>
                                 </h3>
                                 <button onClick={() => setIsEmailModalOpen(false)} className="text-gray-400 hover:text-gray-600">
@@ -435,14 +464,14 @@ export default function Admin() {
                             <form onSubmit={sendEmail} className="p-6 overflow-y-auto flex-1 space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Load Template</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Modèle</label>
                                         <div className="relative">
                                             <select
                                                 value={selectedTemplateId}
                                                 onChange={handleTemplateChange}
                                                 className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-gray-200 bg-white focus:border-[#538270] focus:ring-2 focus:ring-[#538270]/20 appearance-none outline-none text-sm"
                                             >
-                                                <option value="">Select a template...</option>
+                                                <option value="">Sélectionner un modèle...</option>
                                                 {templates.map(t => (
                                                     <option key={t._id} value={t._id}>{t.name}</option>
                                                 ))}
@@ -451,25 +480,25 @@ export default function Admin() {
                                         </div>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Objet</label>
                                         <input
                                             type="text"
                                             value={emailSubject}
                                             onChange={(e) => setEmailSubject(e.target.value)}
                                             className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#538270] focus:ring-2 focus:ring-[#538270]/20 outline-none text-sm"
-                                            placeholder="Subject line"
+                                            placeholder="Objet de l'email"
                                             required
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Message Body</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                                     <textarea
                                         value={emailBody}
                                         onChange={(e) => setEmailBody(e.target.value)}
                                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#538270] focus:ring-2 focus:ring-[#538270]/20 outline-none min-h-[150px] resize-y"
-                                        placeholder="Write your email content here (plain text). We will format it nicely for you!"
+                                        placeholder="Écrivez votre message ici. Nous le mettrons en forme automatiquement !"
                                         required
                                     />
                                 </div>
@@ -478,10 +507,10 @@ export default function Admin() {
                                 <div className="border border-gray-100 rounded-xl overflow-hidden bg-gray-50/50">
                                     <div className="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center gap-2">
                                         <Eye size={14} className="text-gray-500" />
-                                        <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">Live Preview</span>
+                                        <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">Aperçu en direct</span>
                                     </div>
                                     <div className="h-[250px] overflow-y-auto bg-white p-4">
-                                        <div dangerouslySetInnerHTML={{ __html: generateEmailHtml(emailBody || "Start typing to see preview...") }} />
+                                        <div dangerouslySetInnerHTML={{ __html: generateEmailHtml(emailBody || "Commencez à écrire pour voir l'aperçu...") }} />
                                     </div>
                                 </div>
 
@@ -493,7 +522,7 @@ export default function Admin() {
                                         onChange={(e) => setSaveAsTemplate(e.target.checked)}
                                         className="rounded border-gray-300 text-[#538270] focus:ring-[#538270]"
                                     />
-                                    <label htmlFor="saveTemplate" className="text-sm text-gray-700">Save as new template?</label>
+                                    <label htmlFor="saveTemplate" className="text-sm text-gray-700">Sauvegarder comme nouveau modèle ?</label>
                                 </div>
 
                                 {saveAsTemplate && (
@@ -503,7 +532,7 @@ export default function Admin() {
                                             value={newTemplateName}
                                             onChange={(e) => setNewTemplateName(e.target.value)}
                                             className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#538270] outline-none text-sm"
-                                            placeholder="Template Name (e.g., 'May Newsletter')"
+                                            placeholder="Nom du modèle (ex: 'Newsletter Mai')"
                                             required={saveAsTemplate}
                                         />
                                     </motion.div>
@@ -515,14 +544,14 @@ export default function Admin() {
                                         onClick={() => setIsEmailModalOpen(false)}
                                         className="px-6 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition-colors"
                                     >
-                                        Cancel
+                                        Annuler
                                     </button>
                                     <button
                                         type="submit"
                                         disabled={isSending}
                                         className="px-6 py-2.5 rounded-xl bg-[#538270] text-white font-bold hover:bg-[#3d5f52] transition-colors shadow-lg shadow-[#538270]/20 flex items-center gap-2"
                                     >
-                                        {isSending ? 'Sending...' : <><Send size={18} /> Send Application</>}
+                                        {isSending ? 'Envoi...' : <><Send size={18} /> Envoyer</>}
                                     </button>
                                 </div>
                             </form>

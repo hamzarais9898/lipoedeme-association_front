@@ -196,6 +196,19 @@ app.post('/api/admin/templates', async (req, res) => {
     }
 });
 
+// 6. Delete Subscriber
+app.delete('/api/admin/subscribers/:id', async (req, res) => {
+    const token = req.headers.authorization;
+    if (token !== 'Bearer admin-token-secret') return res.status(401).json({ error: 'Unauthorized' });
+
+    try {
+        await Subscriber.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Subscriber deleted' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.listen( process.env.PORT || 5000, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
