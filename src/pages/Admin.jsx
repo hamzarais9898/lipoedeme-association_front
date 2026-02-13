@@ -57,7 +57,7 @@ export default function Admin() {
         }
     }
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"
+    const API_URL = process.env.REACT_APP_API_URL || "https://moslipod-75df6c235fd9.herokuapp.com"
 
     const handleLogin = async (e) => {
         e.preventDefault()

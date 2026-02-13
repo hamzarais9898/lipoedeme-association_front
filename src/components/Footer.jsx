@@ -104,7 +104,7 @@ export function Footer({ lang = "fr" }) {
                                 setIsLoading(true);
 
                                 try {
-                                    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+                                    const apiUrl = process.env.REACT_APP_API_URL || "https://moslipod-75df6c235fd9.herokuapp.com/";
                                     const response = await fetch(`${apiUrl}/api/newsletter`, {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
