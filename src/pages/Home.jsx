@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users } from "lucide-react"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 import image1 from "../assets/images/logo1.png"
 
 const containerVariants = {
@@ -75,6 +76,11 @@ export default function Home({ lang = "fr" }) {
 
     return (
         <div className="bg-white transition-colors duration-300 overflow-hidden">
+            <SEO
+                title={t("home.hero.title2", lang)}
+                description={t("home.hero.description", lang)}
+                lang={lang}
+            />
             {/* HERO SECTION - Ultra Creative */}
             <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-10 pb-10">
                 {/* Animated gradient background */}
@@ -355,12 +361,12 @@ export default function Home({ lang = "fr" }) {
 
                         <motion.div
                             variants={itemVariants}
-                            className="relative h-80 sm:h-[500px] rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20"
+                            className="relative h-80 sm:h-[500px] rounded-2xl overflow-hidden bg-[#B4C9B3] border border-white/20 flex items-center justify-center p-10 shadow-lg"
                         >
                             <motion.div
-                                animate={{ y: [-10, 10, -10] }}
-                                transition={{ duration: 4, repeat: Infinity }}
-                                className="w-full h-full flex items-center justify-center p-10"
+                                animate={{ y: [-15, 15, -15] }}
+                                transition={{ duration: 10, repeat: Infinity }}
+                                className="w-full h-full flex items-center justify-center"
                             >
                                 <img src={image1} alt="MOSLIPOD" className="w-full h-full object-contain" />
                             </motion.div>
@@ -370,7 +376,7 @@ export default function Home({ lang = "fr" }) {
             </section>
 
             {/* LATEST NEWS SECTION */}
-            <section className="py-32 px-4 bg-gradient-to-b from-white to-[#F5F1EB]/50 transition-colors duration-300">
+            <section className="py-32 px-4 bg-gradient-to-b from-white to-[#F5F1EB]/50 transition-colors duration-300" >
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -452,10 +458,10 @@ export default function Home({ lang = "fr" }) {
                         </Link>
                     </motion.div>
                 </div>
-            </section>
+            </section >
 
             {/* CONTACT SECTION */}
-            <section className="py-32 px-4 bg-white relative overflow-hidden transition-colors duration-300">
+            < section className="py-32 px-4 bg-white relative overflow-hidden transition-colors duration-300" >
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -554,7 +560,7 @@ export default function Home({ lang = "fr" }) {
 
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm font-bold text-[#538270] mb-2 transition-colors">{lang === "fr" ? "Indicatif Pays *" : lang === "en" ? "Country Code *" : "رمز الدولة *"}</label>
+                                    <label className="block text-sm font-bold text-[#538270] mb-2 transition-colors">{lang === "fr" ? "Indicatif *" : lang === "en" ? "Code *" : "الرمز *"}</label>
                                     <select
                                         name="countryCode"
                                         value={formData.countryCode}
@@ -631,7 +637,7 @@ export default function Home({ lang = "fr" }) {
                         </motion.form>
                     </motion.div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     )
 }

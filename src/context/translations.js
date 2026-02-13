@@ -9,11 +9,18 @@ const translations = {
             news: "News",
             contact: "Contact"
         },
+        newsPage: {
+            title: "News",
+            comingSoon: "Coming Soon",
+            description: "We are currently working on this page to bring you the latest news and updates on Lipedema. Stay tuned!",
+            backHome: "Back to Home"
+        },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "All rights reserved © 2025 MOSLIPOD"
+            rights: "All rights reserved © {year} MOSLIPOD"
+
         },
         home: {
             hero: {
@@ -293,7 +300,7 @@ const translations = {
                 firstName: "First Name *",
                 lastName: "Last Name *",
                 organisation: "Organization",
-                countryCode: "Country Code *",
+                countryCode: "Code *",
                 phone: "Phone *",
                 email: "Email *",
                 subject: "Subject *",
@@ -311,6 +318,43 @@ const translations = {
                 phoneTitle: "Phone",
                 emailTitle: "Email"
             }
+        },
+        privacy: {
+            title: "Privacy Policy",
+            subtitle: "Last updated: Feb 2026",
+            intro: "At MOSLIPOD, we prioritize the protection of your personal data. This policy details how we collect, use, and protect your information.",
+            collection: {
+                title: "Data Collection",
+                content: "We collect information you provide directly to us (name, email, etc.) when you fill out forms or subscribe to our newsletter."
+            },
+            usage: {
+                title: "Use of Data",
+                content: "Your data is used to communicate with you, manage your membership, and send you information about our activities."
+            },
+            protection: {
+                title: "Data Protection",
+                content: "We implement security measures to protect your data from unauthorized access or disclosure."
+            },
+            rights: {
+                title: "Your Rights",
+                content: "You have the right to access, correct, or delete your personal data. Contact us at Lipoedememaroc@gmail.com for any requests."
+            }
+        },
+        legal: {
+            title: "Legal Mentions",
+            subtitle: "General Information",
+            editor: {
+                title: "Site Editor",
+                content: "MOSLIPOD (Moroccan Society of Lipedema)\n7, rue Ahmed Annaciri – Palmier\n20100 Casablanca\nMorocco\nEmail: Lipoedememaroc@gmail.com\nPhone: +212 6 66 01 39 59"
+            },
+            hosting: {
+                title: "Hosting",
+                content: "This site is hosted by KYBOHO, located at 44 Avenue Mohammed Ben Abdellah, Fes."
+            },
+            ip: {
+                title: "Intellectual Property",
+                content: "All content on this site (text, images, logos) is the property of MOSLIPOD or its partners and is protected by copyright laws."
+            }
         }
     },
     fr: {
@@ -323,11 +367,18 @@ const translations = {
             news: "Actualités",
             contact: "Contact"
         },
+        newsPage: {
+            title: "Actualités",
+            comingSoon: "Bientôt Disponible",
+            description: "Nous travaillons actuellement sur cette page pour vous apporter les dernières nouvelles et mises à jour sur le lipœdème. Restez connectés !",
+            backHome: "Retour à l'accueil"
+        },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "Tous droits réservés © 2025 MOSLIPOD"
+            rights: "Tous droits réservés © {year} MOSLIPOD"
+
         },
         home: {
             hero: {
@@ -607,7 +658,7 @@ const translations = {
                 firstName: "Prénom *",
                 lastName: "Nom *",
                 organisation: "Organisation",
-                countryCode: "Indicatif Pays *",
+                countryCode: "Indicatif *",
                 phone: "Téléphone *",
                 email: "Email *",
                 subject: "Objet *",
@@ -625,6 +676,43 @@ const translations = {
                 phoneTitle: "Téléphone",
                 emailTitle: "Email"
             }
+        },
+        privacy: {
+            title: "Politique de Confidentialité",
+            subtitle: "Dernière mise à jour : Fév 2026",
+            intro: "Chez MOSLIPOD, nous accordons une grande importance à la protection de vos données personnelles. Cette politique détaille comment nous collectons, utilisons et protégeons vos informations.",
+            collection: {
+                title: "Collecte des Données",
+                content: "Nous collectons les informations que vous nous fournissez directement (nom, email, etc.) lorsque vous remplissez des formulaires ou vous inscrivez à notre newsletter."
+            },
+            usage: {
+                title: "Utilisation des Données",
+                content: "Vos données sont utilisées pour communiquer avec vous, gérer votre adhésion et vous envoyer des informations sur nos activités."
+            },
+            protection: {
+                title: "Protection des Données",
+                content: "Nous mettons en œuvre des mesures de sécurité pour protéger vos données contre tout accès non autorisé ou divulgation."
+            },
+            rights: {
+                title: "Vos Droits",
+                content: "Vous avez le droit d'accéder, de corriger ou de supprimer vos données personnelles. Contactez-nous à Lipoedememaroc@gmail.com pour toute demande."
+            }
+        },
+        legal: {
+            title: "Mentions Légales",
+            subtitle: "Informations Générales",
+            editor: {
+                title: "Éditeur du Site",
+                content: "MOSLIPOD (Société Marocaine du Lipœdème)\n7, rue Ahmed Annaciri – Palmier\n20100 Casablanca\nMaroc\nEmail : Lipoedememaroc@gmail.com\nTéléphone : +212 6 66 01 39 59"
+            },
+            hosting: {
+                title: "Hébergement",
+                content: "Ce site est hébergé par KYBOHO, situé au 44 Avenue Mohammed Ben Abdellah, Fès."
+            },
+            ip: {
+                title: "Propriété Intellectuelle",
+                content: "Tout le contenu de ce site (textes, images, logos) est la propriété de MOSLIPOD ou de ses partenaires et est protégé par les lois sur le droit d'auteur."
+            }
         }
     },
     ar: {
@@ -634,14 +722,21 @@ const translations = {
             lipoedeme: "الوذمة الشحمية",
             actions: "أعمالنا",
             adhesion: "العضوية",
-            news: "أخبارنا",
+            news: "أخبار",
             contact: "اتصل بنا"
+        },
+        newsPage: {
+            title: "أخبار",
+            comingSoon: "قريباً",
+            description: "نحن نعمل حاليًا على هذه الصفحة لنجلب لك آخر الأخبار والتحديثات حول الوذمة الشحمية. ابقوا على اطلاع!",
+            backHome: "العودة للرئيسية"
         },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "© 2025 MOSLIPOD. جميع الحقوق محفوظة."
+            rights: "© {year} MOSLIPOD. جميع الحقوق محفوظة."
+
         },
         home: {
             hero: {
@@ -911,6 +1006,43 @@ const translations = {
                 button2: "العودة إلى الرئيسية"
             }
         },
+        privacy: {
+            title: "سياسة الخصوصية",
+            subtitle: "آخر تحديث: فبراير 2026",
+            intro: "في MOSLIPOD، نولي أهمية كبيرة لحماية بياناتك الشخصية. توضح هذه السياسة كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتك.",
+            collection: {
+                title: "جمع البيانات",
+                content: "نجمع المعلومات التي تقدمها لنا مباشرة (الاسم، البريد الإلكتروني، إلخ) عند ملء النماذج أو الاشتراك في نشرتنا الإخبارية."
+            },
+            usage: {
+                title: "استخدام البيانات",
+                content: "تُستخدم بياناتك للتواصل معك، وإدارة عضويتك، وإرسال معلومات حول أنشطتنا."
+            },
+            protection: {
+                title: "حماية البيانات",
+                content: "نحن نطبق إجراءات أمنية لحماية بياناتك من الوصول غير المصرح به أو الكشف عنها."
+            },
+            rights: {
+                title: "حقوقك",
+                content: "لديك الحق في الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها. اتصل بنا على Lipoedememaroc@gmail.com لأي طلب."
+            }
+        },
+        legal: {
+            title: "إشعار قانوني",
+            subtitle: "معلومات عامة",
+            editor: {
+                title: "ناشر الموقع",
+                content: "MOSLIPOD (الجمعية المغربية للوذمة الشحمية)\n7، شارع أحمد الناصري – بالمي\n20100 الدار البيضاء\nالمغرب\nالبريد الإلكتروني: Lipoedememaroc@gmail.com\nالهاتف: +212 6 66 01 39 59"
+            },
+            hosting: {
+                title: "الاستضافة",
+                content: "تتم استضافة هذا الموقع بواسطة KYBOHO، ومقره 44 شارع محمد بن عبد الله، فاس."
+            },
+            ip: {
+                title: "الملكية الفكرية",
+                content: "جميع محتويات هذا الموقع (نصوص، صور، شعارات) هي ملك لـ MOSLIPOD أو شركائها ومحمية بموجب قوانين حقوق النشر."
+            }
+        },
         contactPage: {
             hero: {
                 badge: "دعونا نتحدث",
@@ -921,7 +1053,7 @@ const translations = {
                 firstName: "الاسم الأول *",
                 lastName: "الاسم الأخير *",
                 organisation: "المؤسسة",
-                countryCode: "رمز البلد *",
+                countryCode: "الرمز *",
                 phone: "الهاتف *",
                 email: "البريد الإلكتروني *",
                 subject: "الموضوع *",

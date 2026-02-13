@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,6 +9,12 @@ import Lipoedeme from './pages/Lipoedeme';
 import Actions from './pages/Actions';
 import Adhesion from './pages/Adhesion';
 import Contact from './pages/Contact';
+import News from './pages/News';
+
+
+import Admin from './pages/Admin';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import LegalMentions from './pages/LegalMentions';
 
 function App() {
   const [lang, setLang] = useState('fr');
@@ -18,8 +25,9 @@ function App() {
   }, [lang]);
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+    <HelmetProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
         <Header currentLang={lang} onLangChange={setLang} />
         <main className="flex-grow pt-24 w-full">
           <Routes>
@@ -30,15 +38,18 @@ function App() {
             <Route path="/adhesion" element={<Adhesion lang={lang} />} />
             <Route path="/news" element={<News lang={lang} />} />
             <Route path="/contact" element={<Contact lang={lang} />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/confidentialite" element={<PrivacyPolicy lang={lang} />} />
+            <Route path="/mentions-legales" element={<LegalMentions lang={lang} />} />
           </Routes>
         </main>
         <Footer lang={lang} />
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
 // Temporary components for other routes
-const News = ({ lang }) => <div className="max-w-7xl mx-auto px-4 py-20 text-center text-3xl font-bold">Actualités</div>;
 
 export default App;

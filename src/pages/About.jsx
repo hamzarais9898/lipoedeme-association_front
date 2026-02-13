@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Users, Target, Lightbulb, BookOpen, Award, Globe, ArrowRight, FileText } from "lucide-react"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,8 +38,27 @@ export default function About({ lang = "fr" }) {
         "from-[#538270] to-[#3d5f52]",
     ]
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "MOSLIPOD",
+        "foundingDate": "2025",
+        "description": t("about.hero.subtitle", lang),
+        "founder": {
+            "@type": "Person",
+            "name": "Dr Fahd Benslimane"
+        },
+        "areaServed": "Morocco"
+    }
+
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
+            <SEO
+                title={t("about.hero.title", lang)}
+                description={t("about.hero.subtitle", lang)}
+                lang={lang}
+                jsonLd={jsonLd}
+            />
             {/* Page Header / Hero */}
             <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 {/* Animated background */}
