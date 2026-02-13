@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { AlertCircle, Pill, Users, Zap, Heart, Droplet, Activity, Apple, Brain, ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 
 const container = {
     hidden: { opacity: 0 },
@@ -104,8 +105,35 @@ export default function Lipoedeme({ lang = "fr" }) {
         return result;
     };
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "MedicalCondition",
+        "name": t("lipoedeme.hero.title", lang),
+        "alternateName": "Lipedema",
+        "description": t("lipoedeme.definition.p1", lang),
+        "associatedAnatomy": {
+            "@type": "AnatomicalStructure",
+            "name": lang === "fr" ? "Membres inférieurs" : "Lower limbs"
+        },
+        "signOrSymptom": t("lipoedeme.symptoms.items", lang).map(s => ({
+            "@type": "MedicalSymptom",
+            "name": s.title
+        })),
+        "possibleTreatment": t("lipoedeme.treatments.conservative", lang).map(t => ({
+            "@type": "MedicalTherapy",
+            "name": t.title
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
+            <SEO
+                title={t("lipoedeme.hero.title", lang)}
+                description={t("lipoedeme.hero.subtitle", lang)}
+                keywords="lipoedeme, lipedema, symptomes lipoedeme, traitement lipoedeme, jambes poteaux, graisse douloureuse"
+                lang={lang}
+                jsonLd={jsonLd}
+            />
             {/* Hero Section */}
             <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 <div className="absolute inset-0 z-0 pointer-events-none">

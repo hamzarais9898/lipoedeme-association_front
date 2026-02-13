@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Users, CheckCircle2, ArrowRight, Zap } from "lucide-react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 
 
 const scaleIn = {
@@ -28,6 +29,11 @@ export default function Actions({ lang = "fr" }) {
 
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
+            <SEO
+                title={t("nav.actions", lang)}
+                description={t("actions.hero.subtitle", lang)}
+                lang={lang}
+            />
             {/* Hero Section with Animated Background */}
             <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none text-start">

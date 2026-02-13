@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { CheckCircle2, Users, Award, Globe, ArrowRight, Heart, FileText, ClipboardCheck, Vote, PartyPopper } from "lucide-react"
 import { Link } from "react-router-dom"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 
 const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -51,6 +52,11 @@ export default function Adhesion({ lang = "fr" }) {
 
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden">
+            <SEO
+                title={t("nav.adhesion", lang)}
+                description={t("membership.hero.subtitle", lang)}
+                lang={lang}
+            />
             {/* Page Header / Hero Area */}
             <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none text-start">

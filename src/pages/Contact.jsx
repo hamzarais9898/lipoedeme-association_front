@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from "lucide-react"
 import { t } from "../context/translations"
+import SEO from "../components/SEO"
 
 export default function Contact({ lang = "fr" }) {
     const [mounted, setMounted] = useState(false)
@@ -96,8 +97,36 @@ export default function Contact({ lang = "fr" }) {
         }
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        "name": "MOSLIPOD",
+        "url": "https://lipoedeme-association-front.vercel.app",
+        "logo": "https://lipoedeme-association-front.vercel.app/logo-association.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+212 6 66 01 39 59",
+            "contactType": "customer service",
+            "areaServed": "MA",
+            "availableLanguage": ["French", "Arabic", "English"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "7, rue Ahmed Annaciri – Palmier",
+            "addressLocality": "Casablanca",
+            "postalCode": "20100",
+            "addressCountry": "MA"
+        }
+    }
+
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden text-start">
+            <SEO
+                title={t("nav.contact", lang)}
+                description="Contactez MOSLIPOD pour toute information sur le lipœdème au Maroc."
+                lang={lang}
+                jsonLd={jsonLd}
+            />
             {/* Hero Section */}
             <section className="relative pt-10 pb-20 px-4 bg-gradient-to-br from-[#F5F1EB] via-white to-[#F5F1EB] transition-colors">
                 <div className="absolute inset-0 z-0 pointer-events-none text-start">

@@ -9,11 +9,18 @@ const translations = {
             news: "News",
             contact: "Contact"
         },
+        newsPage: {
+            title: "News",
+            comingSoon: "Coming Soon",
+            description: "We are currently working on this page to bring you the latest news and updates on Lipedema. Stay tuned!",
+            backHome: "Back to Home"
+        },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "All rights reserved © 2025 MOSLIPOD"
+            rights: "All rights reserved © {year} MOSLIPOD"
+
         },
         home: {
             hero: {
@@ -293,7 +300,7 @@ const translations = {
                 firstName: "First Name *",
                 lastName: "Last Name *",
                 organisation: "Organization",
-                countryCode: "Country Code *",
+                countryCode: "Code *",
                 phone: "Phone *",
                 email: "Email *",
                 subject: "Subject *",
@@ -323,11 +330,18 @@ const translations = {
             news: "Actualités",
             contact: "Contact"
         },
+        newsPage: {
+            title: "Actualités",
+            comingSoon: "Bientôt Disponible",
+            description: "Nous travaillons actuellement sur cette page pour vous apporter les dernières nouvelles et mises à jour sur le lipœdème. Restez connectés !",
+            backHome: "Retour à l'accueil"
+        },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "Tous droits réservés © 2025 MOSLIPOD"
+            rights: "Tous droits réservés © {year} MOSLIPOD"
+
         },
         home: {
             hero: {
@@ -607,7 +621,7 @@ const translations = {
                 firstName: "Prénom *",
                 lastName: "Nom *",
                 organisation: "Organisation",
-                countryCode: "Indicatif Pays *",
+                countryCode: "Indicatif *",
                 phone: "Téléphone *",
                 email: "Email *",
                 subject: "Objet *",
@@ -634,14 +648,21 @@ const translations = {
             lipoedeme: "الوذمة الشحمية",
             actions: "أعمالنا",
             adhesion: "العضوية",
-            news: "أخبارنا",
+            news: "أخبار",
             contact: "اتصل بنا"
+        },
+        newsPage: {
+            title: "أخبار",
+            comingSoon: "قريباً",
+            description: "نحن نعمل حاليًا على هذه الصفحة لنجلب لك آخر الأخبار والتحديثات حول الوذمة الشحمية. ابقوا على اطلاع!",
+            backHome: "العودة للرئيسية"
         },
         footer: {
             address: "7, rue Ahmed Annaciri – Palmier, 20100 Casablanca",
             email: "Lipoedememaroc@gmail.com",
             phone: "+212 6 66 01 39 59",
-            rights: "© 2025 MOSLIPOD. جميع الحقوق محفوظة."
+            rights: "© {year} MOSLIPOD. جميع الحقوق محفوظة."
+
         },
         home: {
             hero: {
@@ -921,7 +942,7 @@ const translations = {
                 firstName: "الاسم الأول *",
                 lastName: "الاسم الأخير *",
                 organisation: "المؤسسة",
-                countryCode: "رمز البلد *",
+                countryCode: "الرمز *",
                 phone: "الهاتف *",
                 email: "البريد الإلكتروني *",
                 subject: "الموضوع *",
