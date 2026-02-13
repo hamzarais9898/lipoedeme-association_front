@@ -173,11 +173,11 @@ export function Footer({ lang = "fr" }) {
                             {t.footer.rights.replace('{year}', new Date().getFullYear())}
                         </p>
                         <div className="flex gap-8 text-xs font-semibold text-white/60 uppercase tracking-wider">
-                            <Link to="/" className="hover:text-white transition-colors duration-200">
-                                {lang === "ar" ? "سياسة الخصوصية" : "Politique de confidentialité"}
+                            <Link to="/confidentialite" className="hover:text-white transition-colors duration-200">
+                                {lang === "ar" ? "سياسة الخصوصية" : lang === "en" ? "Privacy Policy" : "Politique de confidentialité"}
                             </Link>
-                            <Link to="/" className="hover:text-white transition-colors duration-200">
-                                {lang === "ar" ? "إشعار قانوني" : "Mentions légales"}
+                            <Link to="/mentions-legales" className="hover:text-white transition-colors duration-200">
+                                {lang === "ar" ? "إشعار قانوني" : lang === "en" ? "Legal Mentions" : "Mentions légales"}
                             </Link>
                         </div>
                     </div>

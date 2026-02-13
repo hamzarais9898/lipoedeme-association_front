@@ -13,6 +13,8 @@ import News from './pages/News';
 
 
 import Admin from './pages/Admin';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import LegalMentions from './pages/LegalMentions';
 
 function App() {
   const [lang, setLang] = useState('fr');
@@ -37,6 +39,8 @@ function App() {
             <Route path="/news" element={<News lang={lang} />} />
             <Route path="/contact" element={<Contact lang={lang} />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/confidentialite" element={<PrivacyPolicy lang={lang} />} />
+            <Route path="/mentions-legales" element={<LegalMentions lang={lang} />} />
           </Routes>
         </main>
         <Footer lang={lang} />
