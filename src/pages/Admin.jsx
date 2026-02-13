@@ -35,7 +35,7 @@ export default function Admin() {
         const t = token.startsWith("Bearer ") ? token : "Bearer " + token
         try {
             // Fetch Subscribers
-            const subRes = await fetch("http://localhost:5000/api/admin/subscribers", {
+            const subRes = await fetch(`${API_URL}/api/admin/subscribers`, {
                 headers: { "Authorization": t },
             })
             if (subRes.ok) {
@@ -46,7 +46,7 @@ export default function Admin() {
             }
 
             // Fetch Templates
-            const tempRes = await fetch("http://localhost:5000/api/admin/templates", {
+            const tempRes = await fetch(`${API_URL}/api/admin/templates`, {
                 headers: { "Authorization": t },
             })
             if (tempRes.ok) {
@@ -57,13 +57,15 @@ export default function Admin() {
         }
     }
 
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"
+
     const handleLogin = async (e) => {
         e.preventDefault()
         setLoading(true)
         setError("")
 
         try {
-            const response = await fetch("http://localhost:5000/api/admin/login", {
+            const response = await fetch(`${API_URL}/api/admin/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
@@ -153,7 +155,7 @@ export default function Admin() {
         try {
             // 1. Save Template if requested (Save raw text, not HTML)
             if (saveAsTemplate && newTemplateName) {
-                await fetch("http://localhost:5000/api/admin/templates", {
+                await fetch(`${API_URL}/api/admin/templates`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -168,7 +170,7 @@ export default function Admin() {
             }
 
             // 2. Send Email
-            await fetch("http://localhost:5000/api/admin/send-email", {
+            await fetch(`${API_URL}/api/admin/send-email`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -197,7 +199,7 @@ export default function Admin() {
 
         const token = localStorage.getItem("adminToken");
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/subscribers/${id}`, {
+            const res = await fetch(`${API_URL}/api/admin/subscribers/${id}`, {
                 method: "DELETE",
                 headers: { "Authorization": token }
             });

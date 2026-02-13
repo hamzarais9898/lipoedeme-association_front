@@ -5,11 +5,31 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
-app.use(cors());
+
+// CORS Configuration
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://www.lipoedemee.com',
+    'https://lipoedemee.com',
+    process.env.CLIENT_URL
+].filter(Boolean);
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://othmanmekouar99:hawd54ZM2eXNljlQ@clusteresisaintranetbet.axsghy0.mongodb.net/?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI ;
 
 mongoose.connect(MONGODB_URI, {
     dbName: 'lipodemenewletters' // Explicitly set the database name/collection context
@@ -104,19 +124,28 @@ app.post('/api/newsletter', async (req, res) => {
 app.post('/api/admin/login', (req, res) => {
     const { username, password } = req.body;
     
-    // Hardcoded credentials as requested
-    if (username === 'fahd' && password === 'fahd12AA??') {
-        res.json({ success: true, token: 'admin-token-secret' });
+    // Credentials from .env
+    const adminUser = process.env.ADMIN_USERNAME;
+    const adminPass = process.env.ADMIN_PASSWORD;
+    const adminToken = process.env.ADMIN_TOKEN_SECRET;
+
+    if (username === adminUser && password === adminPass) {
+        res.json({ success: true, token: adminToken });
     } else {
         res.status(401).json({ error: 'Invalid credentials' });
     }
 });
 
+app.get("/", (req, res) => {
+    res.send("Hello from the server of MOSLIPOD!");
+})
+
 // 3. Get Subscribers (Protected)
 app.get('/api/admin/subscribers', async (req, res) => {
     const token = req.headers.authorization;
+    const adminToken = process.env.ADMIN_TOKEN_SECRET || 'admin-token-secret';
     
-    if (token !== 'Bearer admin-token-secret') {
+    if (token !== `Bearer ${adminToken}`) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
@@ -131,7 +160,8 @@ app.get('/api/admin/subscribers', async (req, res) => {
 // 4. Send Email (Protected)
 app.post('/api/admin/send-email', async (req, res) => {
     const token = req.headers.authorization;
-    if (token !== 'Bearer admin-token-secret') return res.status(401).json({ error: 'Unauthorized' });
+    const adminToken = process.env.ADMIN_TOKEN_SECRET || 'admin-token-secret';
+    if (token !== `Bearer ${adminToken}`) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
         const { recipients, subject, body } = req.body; // recipients is array of emails
@@ -172,7 +202,8 @@ app.post('/api/admin/send-email', async (req, res) => {
 // 5. Template Routes
 app.get('/api/admin/templates', async (req, res) => {
     const token = req.headers.authorization;
-    if (token !== 'Bearer admin-token-secret') return res.status(401).json({ error: 'Unauthorized' });
+    const adminToken = process.env.ADMIN_TOKEN_SECRET || 'admin-token-secret';
+    if (token !== `Bearer ${adminToken}`) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
         const templates = await EmailTemplate.find().sort({ createdAt: -1 });
@@ -184,7 +215,8 @@ app.get('/api/admin/templates', async (req, res) => {
 
 app.post('/api/admin/templates', async (req, res) => {
     const token = req.headers.authorization;
-    if (token !== 'Bearer admin-token-secret') return res.status(401).json({ error: 'Unauthorized' });
+    const adminToken = process.env.ADMIN_TOKEN_SECRET || 'admin-token-secret';
+    if (token !== `Bearer ${adminToken}`) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
         const { name, subject, body } = req.body;
@@ -199,7 +231,8 @@ app.post('/api/admin/templates', async (req, res) => {
 // 6. Delete Subscriber
 app.delete('/api/admin/subscribers/:id', async (req, res) => {
     const token = req.headers.authorization;
-    if (token !== 'Bearer admin-token-secret') return res.status(401).json({ error: 'Unauthorized' });
+    const adminToken = process.env.ADMIN_TOKEN_SECRET || 'admin-token-secret';
+    if (token !== `Bearer ${adminToken}`) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
         await Subscriber.findByIdAndDelete(req.params.id);
