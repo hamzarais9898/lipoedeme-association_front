@@ -11,6 +11,8 @@ const allowedOrigins = [
     'http://localhost:3000',
     'https://www.lipoedemee.com',
     'https://lipoedemee.com',
+    'https://www.lipoedeme-maroc.com',
+    'https://lipoedeme-maroc.com',
     process.env.CLIENT_URL
 ].filter(Boolean);
 
