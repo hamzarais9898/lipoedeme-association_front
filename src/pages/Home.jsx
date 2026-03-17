@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users } from "lucide-react"
+import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users, Newspaper, Radio, Play, Pause, Mic2 } from "lucide-react"
 import { t } from "../context/translations"
 import SEO from "../components/SEO"
 import image1 from "../assets/images/logo1.png"
@@ -21,6 +21,7 @@ const itemVariants = {
 
 export default function Home({ lang = "fr" }) {
     const [mounted, setMounted] = useState(false)
+    const audioRef = useRef(null)
     const [formData, setFormData] = useState({
         nom: "",
         prenom: "",
@@ -31,6 +32,9 @@ export default function Home({ lang = "fr" }) {
         message: "",
         newsletter: false,
     })
+    const [audioCurrentTime, setAudioCurrentTime] = useState(0)
+    const [audioDuration, setAudioDuration] = useState(0)
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false)
 
 
     useEffect(() => {
@@ -73,6 +77,53 @@ export default function Home({ lang = "fr" }) {
     ]
 
     const symptomsIcons = [AlertCircle, Droplet, Activity, Zap, Heart, Users]
+
+    const formatAudioTime = (seconds) => {
+        if (!Number.isFinite(seconds)) return "0:00"
+        const minutes = Math.floor(seconds / 60)
+        const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0")
+        return `${minutes}:${remainingSeconds}`
+    }
+
+    const toggleAudioPlayback = () => {
+        if (!audioRef.current) return
+
+        if (audioRef.current.paused) {
+            const playAttempt = audioRef.current.play()
+            if (playAttempt?.then) {
+                playAttempt
+                    .then(() => setIsAudioPlaying(true))
+                    .catch(() => setIsAudioPlaying(false))
+            } else {
+                setIsAudioPlaying(true)
+            }
+            return
+        }
+
+        audioRef.current.pause()
+        setIsAudioPlaying(false)
+    }
+
+    const handleAudioLoadedMetadata = () => {
+        if (!audioRef.current) return
+        setAudioDuration(audioRef.current.duration || 0)
+    }
+
+    const handleAudioTimeUpdate = () => {
+        if (!audioRef.current) return
+        setAudioCurrentTime(audioRef.current.currentTime || 0)
+    }
+
+    const handleAudioSeek = (e) => {
+        if (!audioRef.current) return
+        const nextTime = Number(e.target.value)
+        audioRef.current.currentTime = nextTime
+        setAudioCurrentTime(nextTime)
+    }
+
+    const handleAudioEnded = () => {
+        setIsAudioPlaying(false)
+    }
 
     return (
         <div className="bg-white transition-colors duration-300 overflow-hidden">
@@ -370,6 +421,155 @@ export default function Home({ lang = "fr" }) {
                             >
                                 <img src={image1} alt="MOSLIPOD" className="w-full h-full object-contain" />
                             </motion.div>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* MEDIA COVERAGE SECTION */}
+            <section className="py-24 px-4 bg-gradient-to-b from-[#F5F1EB]/40 to-white transition-colors duration-300">
+                <div className="max-w-7xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-12 sm:mb-16"
+                    >
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#538270] mb-6 transition-colors">
+                            {lang === "fr" ? "Médiatisation" : lang === "en" ? "Media Coverage" : "التغطية الإعلامية"}
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto transition-colors">
+                            {lang === "fr"
+                                ? "Notre communiqué de presse a été largement relayé, avec des passages radio sur Lux Radio et Radio ASWAT."
+                                : lang === "en"
+                                    ? "Our press release was widely relayed, with radio appearances on Lux Radio and Radio ASWAT."
+                                    : "تم تداول بلاغنا الصحفي على نطاق واسع، مع مداخلات إذاعية على Lux Radio وRadio ASWAT."}
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="grid lg:grid-cols-3 gap-6"
+                    >
+                        <motion.div
+                            variants={itemVariants}
+                            whileHover={{ y: -6 }}
+                            className="bg-white border border-[#B4C9B3]/40 rounded-2xl p-7 shadow-md"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-[#B4C9B3]/20 text-[#538270] flex items-center justify-center mb-4">
+                                <Newspaper size={22} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#538270] mb-3 transition-colors">
+                                {lang === "fr" ? "Revue de presse" : lang === "en" ? "Press Review" : "المراجعة الصحفية"}
+                            </h3>
+                            <p className="text-gray-700 leading-relaxed transition-colors">
+                                {lang === "fr"
+                                    ? "Le communiqué MOSLIPOD a été repris dans plusieurs médias. La compilation détaillée des articles sera ajoutée ici."
+                                    : lang === "en"
+                                        ? "The MOSLIPOD press release was published by several media outlets. A detailed article roundup will be added here."
+                                        : "تم نشر بلاغ MOSLIPOD في عدة وسائل إعلامية. سيتم إضافة تجميع مفصل للمقالات هنا."}
+                            </p>
+                            <a
+                                href="/media/revue-de-presse-communique-creation-moslipo.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-lg bg-[#538270] text-white font-semibold hover:bg-[#3d5f52] transition-colors"
+                            >
+                                {lang === "fr" ? "Voir la revue de presse (PDF)" : lang === "en" ? "Open press review (PDF)" : "عرض المراجعة الصحفية (PDF)"}
+                                <ArrowRight size={16} />
+                            </a>
+                        </motion.div>
+
+                        <motion.div
+                            variants={itemVariants}
+                            whileHover={{ y: -6 }}
+                            className="bg-white border border-[#B4C9B3]/40 rounded-2xl p-7 shadow-md"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-[#B4C9B3]/20 text-[#538270] flex items-center justify-center mb-4">
+                                <Radio size={22} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#538270] mb-3 transition-colors">
+                                {lang === "fr" ? "Passages radio" : lang === "en" ? "Radio Appearances" : "المداخلات الإذاعية"}
+                            </h3>
+                            <div className="space-y-3">
+                                <div className="rounded-xl border border-[#B4C9B3]/40 bg-[#F5F1EB]/50 p-4">
+                                    <p className="text-[#538270] font-semibold mb-1">Lux Radio</p>
+                                    <p className="text-sm text-gray-700 transition-colors">
+                                        {lang === "fr" ? "Relais du communiqué de création de MOSLIPOD." : lang === "en" ? "Coverage of the MOSLIPOD launch press release." : "تغطية لبلاغ تأسيس MOSLIPOD."}
+                                    </p>
+                                </div>
+                                <div className="rounded-xl border border-[#B4C9B3]/40 bg-[#F5F1EB]/50 p-4">
+                                    <p className="text-[#538270] font-semibold mb-1">Radio ASWAT</p>
+                                    <p className="text-sm text-gray-700 transition-colors">
+                                        {lang === "fr" ? "Interview du Dr Fahd Benslimane sur la sensibilisation au lipœdème." : lang === "en" ? "Interview with Dr Fahd Benslimane on lipedema awareness." : "مقابلة مع الدكتور فهد بنسليمان حول التوعية بالوذمة الشحمية."}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            variants={itemVariants}
+                            whileHover={{ y: -6 }}
+                            className="bg-gradient-to-br from-[#538270] to-[#3d5f52] rounded-2xl p-7 shadow-xl text-white"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-white/20 text-white flex items-center justify-center mb-4">
+                                <Mic2 size={22} />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-3 transition-colors">
+                                {lang === "fr" ? "Interview radio" : lang === "en" ? "Radio Interview" : "مقابلة إذاعية"}
+                            </h3>
+                            <p className="text-white/85 mb-4">
+                                {lang === "fr"
+                                    ? "Écoutez l'enregistrement transmis pour intégration sur la page d'accueil."
+                                    : lang === "en"
+                                        ? "Listen to the shared recording integrated on the home page."
+                                        : "استمعوا إلى التسجيل المدمج في الصفحة الرئيسية."}
+                            </p>
+                            <audio
+                                ref={audioRef}
+                                className="hidden"
+                                preload="metadata"
+                                onLoadedMetadata={handleAudioLoadedMetadata}
+                                onTimeUpdate={handleAudioTimeUpdate}
+                                onEnded={handleAudioEnded}
+                            >
+                                <source src="/media/hdit-04-03-2026.mpeg" type="audio/mpeg" />
+                                {lang === "fr"
+                                    ? "Votre navigateur ne supporte pas la lecture audio."
+                                    : lang === "en"
+                                        ? "Your browser does not support audio playback."
+                                        : "متصفحكم لا يدعم تشغيل الصوت."}
+                            </audio>
+                            <div className="rounded-2xl bg-white/15 border border-white/25 p-4 backdrop-blur-sm">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <button
+                                        type="button"
+                                        onClick={toggleAudioPlayback}
+                                        className="w-11 h-11 rounded-full bg-white text-[#538270] flex items-center justify-center hover:scale-105 transition-transform"
+                                        aria-label={isAudioPlaying ? "Pause audio" : "Play audio"}
+                                    >
+                                        {isAudioPlaying ? <Pause size={20} /> : <Play size={20} className="ml-0.5" />}
+                                    </button>
+                                    <div className="flex-1">
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max={audioDuration || 0}
+                                            step="0.1"
+                                            value={audioCurrentTime}
+                                            onChange={handleAudioSeek}
+                                            className="w-full accent-[#B4C9B3]"
+                                        />
+                                        <div className="flex justify-between text-xs text-white/90 mt-1">
+                                            <span>{formatAudioTime(audioCurrentTime)}</span>
+                                            <span>{formatAudioTime(audioDuration)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
