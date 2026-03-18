@@ -249,35 +249,7 @@ export default function About({ lang = "fr" }) {
                 </div>
             </section>
 
-            {/* Statuts Section */}
-            <section className="py-24 px-4 bg-[#F5F1EB] transition-colors">
-                <div className="max-w-4xl mx-auto text-center">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl font-bold text-[#538270] mb-8 transition-colors"
-                    >
-                        {t("about.stats.title", lang)}
-                    </motion.h2>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                        className="bg-white p-12 rounded-3xl shadow-xl border border-[#B4C9B3]/30 transition-colors"
-                    >
-                        <p className="text-xl text-gray-700 leading-relaxed mb-10 transition-colors">
-                            {t("about.stats.description", lang)}
-                        </p>
-                        <button className="px-10 py-4 bg-[#538270] text-white rounded-xl font-bold text-lg hover:shadow-2xl transition-all flex items-center gap-3 mx-auto group">
-                            <FileText size={24} />
-                            {t("about.stats.cta", lang)}
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                    </motion.div>
-                </div>
-            </section>
+            // ...existing code...
 
             {/* CTA SECTION */}
             <section className="py-20 sm:py-32 px-4 bg-white relative overflow-hidden">
