@@ -550,24 +550,6 @@ export default function Home({ lang = "fr" }) {
                             ))}
                         </motion.div>
 
-                        {/* PDF secondary link */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="flex justify-center"
-                        >
-                            <a
-                                href="/media/revue-de-presse-communique-creation-moslipo.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-[#B4C9B3]/60 text-[#538270] font-semibold text-sm hover:bg-[#F5F1EB] hover:border-[#538270] transition-all duration-300"
-                            >
-                                <Newspaper size={16} />
-                                {lang === "fr" ? "Voir la compilation PDF complète" : lang === "en" ? "View full PDF compilation" : "عرض التجميع الكامل (PDF)"}
-                                <ArrowRight size={14} />
-                            </a>
-                        </motion.div>
                     </motion.div>
 
                     {/* ═══════════════════════════════════════════════ */}
