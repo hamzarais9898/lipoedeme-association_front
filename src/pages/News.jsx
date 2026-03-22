@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ArrowLeft, ArrowRight, CalendarDays, ExternalLink, Mic2, Newspaper, Radio, Volume2 } from "lucide-react"
+import { CalendarDays, ExternalLink, Mic2, Newspaper, PlayCircle, Volume2 } from "lucide-react"
 import { t } from "../context/translations"
 import SEO from "../components/SEO"
 
@@ -13,12 +13,12 @@ export default function News({ lang = "fr" }) {
 
     if (!mounted) return null
 
-    const isRTL = lang === "ar"
-    const ArrowForwardIcon = isRTL ? ArrowLeft : ArrowRight
-
-    const coverage = [
+    const updates = [
         {
+            id: "2m",
+            kind: "press",
             source: "LE TEMPS MAGAZINE",
+            dateValue: "2026-02-17",
             date: {
                 fr: "17 Fevrier 2026",
                 en: "February 17, 2026",
@@ -33,7 +33,10 @@ export default function News({ lang = "fr" }) {
             accent: "#1D3557",
         },
         {
+            id: "lalla-fatema",
+            kind: "press",
             source: "LALLA FATEMA",
+            dateValue: "2026-02-18",
             date: {
                 fr: "18 Fevrier 2026",
                 en: "February 18, 2026",
@@ -48,7 +51,10 @@ export default function News({ lang = "fr" }) {
             accent: "#A03D6D",
         },
         {
+            id: "aujourdhui",
+            kind: "press",
             source: "AUJOURD'HUI LE MAROC",
+            dateValue: "2026-02-20",
             date: {
                 fr: "20 Fevrier 2026",
                 en: "February 20, 2026",
@@ -63,7 +69,10 @@ export default function News({ lang = "fr" }) {
             accent: "#2C6E91",
         },
         {
+            id: "lematin",
+            kind: "press",
             source: "LE MATIN",
+            dateValue: "2026-02-22",
             date: {
                 fr: "22 Fevrier 2026",
                 en: "February 22, 2026",
@@ -78,7 +87,10 @@ export default function News({ lang = "fr" }) {
             accent: "#264653",
         },
         {
+            id: "2m-ma",
+            kind: "press",
             source: "2M.MA",
+            dateValue: "2026-02-24",
             date: {
                 fr: "24 Fevrier 2026",
                 en: "February 24, 2026",
@@ -92,7 +104,54 @@ export default function News({ lang = "fr" }) {
             url: "https://2m.ma//fr/news/Lip%C5%93d%C3%A8me-le-Maroc-se-dote-d-une-association-scientifique-pour-20260224",
             accent: "#457B9D",
         },
+        {
+            id: "lux-radio",
+            kind: "radio-link",
+            source: "Lux Radio",
+            dateValue: "2026-02-18",
+            date: {
+                fr: "18 Fevrier 2026",
+                en: "February 18, 2026",
+                ar: "18 فبراير 2026",
+            },
+            title: {
+                fr: "Creation au Maroc d'une societe dediee au lipœdeme",
+                en: "Creation in Morocco of a society dedicated to lipedema",
+                ar: "تاسيس جمعية متخصصة في الوذمة الشحمية بالمغرب",
+            },
+            description: {
+                fr: "Une intervention axee sur la naissance de MOSLIPOD, les enjeux de diagnostic precoce et l'importance d'une prise en charge multidisciplinaire.",
+                en: "An interview focused on MOSLIPOD's launch, early diagnosis challenges, and the need for multidisciplinary care.",
+                ar: "مداخلة ركزت على انطلاق MOSLIPOD، تحديات التشخيص المبكر، واهمية الرعاية متعددة التخصصات.",
+            },
+            url: "https://open.luxeradio.ma/show/track/b0114171a30638cfa7bbbd0e0a17c16b?audio=creation-au-maroc-dune-societe-dediee-au-lipoedeme",
+            accent: "#2D728F",
+        },
+        {
+            id: "aswat",
+            kind: "radio-audio",
+            source: "RADIO ASWAT",
+            dateValue: "2026-02-18",
+            date: {
+                fr: "18 Fevrier 2026",
+                en: "February 18, 2026",
+                ar: "18 فبراير 2026",
+            },
+            title: {
+                fr: "Interview radio - Radio ASWAT",
+                en: "Radio Interview - Radio ASWAT",
+                ar: "مقابلة اذاعية - راديو اصوات",
+            },
+            description: {
+                fr: "Ecoutez l'extrait de notre intervention sur Radio ASWAT, disponible directement depuis cette page.",
+                en: "Listen to the excerpt from our Radio ASWAT intervention directly from this page.",
+                ar: "استمع الى مقتطف مداخلتنا على راديو اصوات مباشرة من هذه الصفحة.",
+            },
+            accent: "#1f4f41",
+        },
     ]
+
+    const sortedUpdates = [...updates].sort((a, b) => b.dateValue.localeCompare(a.dateValue))
 
     return (
         <div className="min-h-screen bg-white transition-colors duration-300 overflow-hidden relative">
@@ -179,133 +238,69 @@ export default function News({ lang = "fr" }) {
                             <Newspaper size={20} />
                         </div>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f4f41] font-dir tracking-tight">
-                            {lang === "fr" ? "Presse Ecrite & Web" : lang === "en" ? "Print & Web Press" : "الصحافة المكتوبة والويب"}
+                            {lang === "fr" ? "Actualites" : lang === "en" ? "News" : "الاخبار"}
                         </h2>
                     </div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-                        {coverage.map((item, idx) => (
+                        {sortedUpdates.map((item, idx) => (
                             <motion.article
-                                key={item.source}
+                                key={item.id}
                                 initial={{ opacity: 0, y: 18 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: idx * 0.05 }}
+                                transition={{ delay: idx * 0.04 }}
                                 whileHover={{ y: -8, boxShadow: "0 22px 40px rgba(26, 49, 39, 0.18)" }}
-                                className="rounded-2xl border border-[#d0d5c4] bg-[#fefdf9] shadow-md overflow-hidden"
+                                className={`rounded-2xl border overflow-hidden ${item.kind === "radio-audio" ? "bg-gradient-to-br from-[#1f4f41] to-[#2F6B57] text-white border-[#345a4d]" : "bg-[#fefdf9] border-[#d0d5c4]"}`}
                             >
                                 <div className="h-1.5" style={{ backgroundColor: item.accent }} />
 
                                 <div className="px-5 pt-4 pb-3 flex items-start justify-between gap-3">
-                                    <span className="inline-flex items-center gap-1.5 text-[#1f4f41] text-xs font-extrabold uppercase tracking-wider">
-                                        <Newspaper size={13} />
+                                    <span className={`inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider ${item.kind === "radio-audio" ? "text-white" : "text-[#1f4f41]"}`}>
+                                        {item.kind === "press" ? <Newspaper size={13} /> : item.kind === "radio-link" ? <PlayCircle size={13} /> : <Mic2 size={13} />}
                                         {item.source}
                                     </span>
-                                    <span className="inline-flex items-center gap-1 text-xs text-[#64736b] font-semibold whitespace-nowrap">
+                                    <span className={`inline-flex items-center gap-1 text-xs font-semibold whitespace-nowrap ${item.kind === "radio-audio" ? "text-white/85" : "text-[#64736b]"}`}>
                                         <CalendarDays size={13} />
                                         {item.date[lang] || item.date.fr}
                                     </span>
                                 </div>
 
-                                <div className="px-5 pb-4 min-h-[120px]">
-                                    <h3 className="text-[15px] sm:text-base font-bold text-[#1f2622] leading-snug">
+                                <div className="px-5 pb-3 min-h-[108px]">
+                                    <h3 className={`text-[15px] sm:text-base font-bold leading-snug ${item.kind === "radio-audio" ? "text-white" : "text-[#1f2622]"}`}>
                                         {item.title[lang] || item.title.fr}
                                     </h3>
+                                    {item.description && (
+                                        <p className={`text-sm mt-3 leading-relaxed ${item.kind === "radio-audio" ? "text-white/90" : "text-[#4f5c55]"}`}>
+                                            {item.description[lang] || item.description.fr}
+                                        </p>
+                                    )}
                                 </div>
 
-                                <div className="px-5 pb-5">
-                                    <a
-                                        href={item.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-[#2F6B57] font-semibold text-sm hover:text-[#1f4f41] transition-colors"
-                                    >
-                                        {lang === "fr" ? "Lire l'article" : lang === "en" ? "Read Article" : "اقرا المقال"}
-                                        <ExternalLink size={14} />
-                                    </a>
-                                </div>
+                                {item.kind === "radio-audio" ? (
+                                    <div className="px-5 pb-5">
+                                        <audio controls className="w-full rounded-lg">
+                                            <source src="/media/hdit-04-03-2026.mpeg" type="audio/mpeg" />
+                                            {lang === "fr" ? "Votre navigateur ne supporte pas la lecture audio." : lang === "en" ? "Your browser does not support audio playback." : "متصفحكم لا يدعم تشغيل الصوت."}
+                                        </audio>
+                                    </div>
+                                ) : (
+                                    <div className="px-5 pb-5">
+                                        <a
+                                            href={item.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 text-[#2F6B57] font-semibold text-sm hover:text-[#1f4f41] transition-colors"
+                                        >
+                                            {item.kind === "radio-link"
+                                                ? (lang === "fr" ? "Ecouter l'emission" : lang === "en" ? "Listen To The Show" : "استمع الى الحلقة")
+                                                : (lang === "fr" ? "Lire l'article" : lang === "en" ? "Read Article" : "اقرا المقال")}
+                                            <ExternalLink size={14} />
+                                        </a>
+                                    </div>
+                                )}
                             </motion.article>
                         ))}
-                    </div>
-
-                </motion.section>
-
-                <motion.section
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <div className="flex items-center gap-3 mb-7">
-                        <div className="w-11 h-11 rounded-xl bg-[#204b3c] text-white flex items-center justify-center shadow-md">
-                            <Radio size={20} />
-                        </div>
-                        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f4f41] font-dir tracking-tight">
-                            {lang === "fr" ? "Radio & Podcasts" : lang === "en" ? "Radio & Podcasts" : "الاذاعة والبودكاست"}
-                        </h2>
-                    </div>
-
-                    <div className="grid lg:grid-cols-2 gap-6">
-                        <article className="rounded-2xl border border-[#d0d5c4] bg-[#fefdf9] shadow-md p-6">
-                            <div className="flex items-center justify-between mb-4 gap-3">
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#2D728F] to-[#3B8EA5] text-white text-xs font-bold uppercase tracking-wider">
-                                    <Radio size={13} />
-                                    Lux Radio
-                                </span>
-                                <span className="text-xs text-[#64736b] font-semibold">
-                                    {lang === "fr" ? "18 Fevrier 2026" : lang === "en" ? "February 18, 2026" : "18 فبراير 2026"}
-                                </span>
-                            </div>
-
-                            <h3 className="text-lg font-bold text-[#1f2622] mb-2 leading-snug">
-                                {lang === "fr" ? "Creation au Maroc d'une societe dediee au lipœdeme" : lang === "en" ? "Creation in Morocco of a society dedicated to lipedema" : "تاسيس جمعية متخصصة في الوذمة الشحمية بالمغرب"}
-                            </h3>
-                            <p className="text-sm text-[#4f5c55] mb-5 leading-relaxed">
-                                {lang === "fr"
-                                    ? "Une intervention axee sur la naissance de MOSLIPOD, les enjeux de diagnostic precoce et l'importance d'une prise en charge multidisciplinaire."
-                                    : lang === "en"
-                                        ? "An interview focused on MOSLIPOD's launch, early diagnosis challenges, and the need for multidisciplinary care."
-                                        : "مداخلة ركزت على انطلاق MOSLIPOD، تحديات التشخيص المبكر، واهمية الرعاية متعددة التخصصات."}
-                            </p>
-
-                            <a
-                                href="https://open.luxeradio.ma/show/track/b0114171a30638cfa7bbbd0e0a17c16b?audio=creation-au-maroc-dune-societe-dediee-au-lipoedeme"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2F6B57] text-white font-semibold text-sm hover:bg-[#204b3c] transition-colors"
-                            >
-                                {lang === "fr" ? "Ecouter l'emission" : lang === "en" ? "Listen To The Show" : "استمع الى الحلقة"}
-                                <ArrowForwardIcon size={14} />
-                            </a>
-                        </article>
-
-                        <article className="rounded-2xl bg-gradient-to-br from-[#1f4f41] to-[#2F6B57] shadow-xl p-6 text-white border border-[#345a4d]">
-                            <div className="flex items-center justify-between mb-4 gap-3">
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/20 text-white text-xs font-bold uppercase tracking-wider">
-                                    <Mic2 size={13} />
-                                    RADIO ASWAT
-                                </span>
-                                <span className="text-xs text-white/80 font-medium">
-                                    {lang === "fr" ? "Extrait audio" : lang === "en" ? "Audio Excerpt" : "مقتطف صوتي"}
-                                </span>
-                            </div>
-
-                            <h3 className="text-lg font-bold mb-2 leading-snug">
-                                {lang === "fr" ? "Interview radio - Radio ASWAT" : lang === "en" ? "Radio Interview - Radio ASWAT" : "مقابلة اذاعية - راديو اصوات"}
-                            </h3>
-                            <p className="text-sm text-white/90 mb-5 leading-relaxed">
-                                {lang === "fr"
-                                    ? "Ecoutez l'extrait de notre intervention sur Radio ASWAT, disponible directement depuis cette page."
-                                    : lang === "en"
-                                        ? "Listen to the excerpt from our Radio ASWAT intervention directly from this page."
-                                        : "استمع الى مقتطف مداخلتنا على راديو اصوات مباشرة من هذه الصفحة."}
-                            </p>
-
-                            <audio controls className="w-full rounded-lg">
-                                <source src="/media/hdit-04-03-2026.mpeg" type="audio/mpeg" />
-                                {lang === "fr" ? "Votre navigateur ne supporte pas la lecture audio." : lang === "en" ? "Your browser does not support audio playback." : "متصفحكم لا يدعم تشغيل الصوت."}
-                            </audio>
-                        </article>
                     </div>
                 </motion.section>
 

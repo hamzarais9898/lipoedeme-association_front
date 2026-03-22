@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users, Newspaper, Radio, Play, Pause, Mic2 } from "lucide-react"
+import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users, CalendarDays, ExternalLink, Newspaper, Play, Pause, PlayCircle, Mic2 } from "lucide-react"
 import { t } from "../context/translations"
 import SEO from "../components/SEO"
 import image1 from "../assets/images/logo1.png"
@@ -124,6 +124,82 @@ export default function Home({ lang = "fr" }) {
     const handleAudioEnded = () => {
         setIsAudioPlaying(false)
     }
+
+    const mediaUpdates = [
+        {
+            id: "2m-ma",
+            kind: "press",
+            source: "2M.MA",
+            dateValue: "2026-02-24",
+            date: lang === "fr" ? "24 Fevrier 2026" : lang === "en" ? "February 24, 2026" : "24 فبراير 2026",
+            title: lang === "fr" ? "Lipœdeme : le Maroc se dote d'une association scientifique pour mieux reconnaitre cette maladie meconnue" : lang === "en" ? "Lipedema: Morocco creates a scientific association to better recognize this underdiagnosed disease" : "الوذمة الشحمية: المغرب يؤسس جمعية علمية لتعزيز التعرف على هذا المرض",
+            url: "https://2m.ma//fr/news/Lip%C5%93d%C3%A8me-le-Maroc-se-dote-d-une-association-scientifique-pour-20260224",
+            color: "#457B9D",
+        },
+        {
+            id: "lematin",
+            kind: "press",
+            source: "LE MATIN",
+            dateValue: "2026-02-22",
+            date: lang === "fr" ? "22 Fevrier 2026" : lang === "en" ? "February 22, 2026" : "22 فبراير 2026",
+            title: lang === "fr" ? "Lipœdeme : une association voit le jour pour briser le silence autour d'une maladie meconnue" : lang === "en" ? "Lipedema: an association is launched to break the silence around an unknown disease" : "الوذمة الشحمية: جمعية جديدة لكسر الصمت حول مرض غير معروف",
+            url: "https://lematin.ma/societe/lipdeme-la-creation-de-moslipod-pour-briser-le-silence/331201",
+            color: "#264653",
+        },
+        {
+            id: "aujourdhui",
+            kind: "press",
+            source: "AUJOURD'HUI LE MAROC",
+            dateValue: "2026-02-20",
+            date: lang === "fr" ? "20 Fevrier 2026" : lang === "en" ? "February 20, 2026" : "20 فبراير 2026",
+            title: lang === "fr" ? "Creation de Moslipod : Une avancee majeure pour la reconnaissance du lipœdeme au Maroc" : lang === "en" ? "Creation of Moslipod: A major step forward for lipedema recognition in Morocco" : "إنشاء MOSLIPOD: تقدم كبير للاعتراف بالوذمة الشحمية في المغرب",
+            url: "https://aujourdhui.ma/lifestyle/creation-de-moslipod-une-avancee-majeure-pour-la-reconnaissance-du-lipoedeme-au-maroc#google_vignette",
+            color: "#1D3557",
+        },
+        {
+            id: "lalla-fatema",
+            kind: "press",
+            source: "LALLA FATEMA",
+            dateValue: "2026-02-18",
+            date: lang === "fr" ? "18 Fevrier 2026" : lang === "en" ? "February 18, 2026" : "18 فبراير 2026",
+            title: lang === "fr" ? "Association marocaine: la lipœdeme au coeur du debat de sante" : lang === "en" ? "Moroccan association puts lipedema at the center of health debate" : "جمعية مغربية جديدة تضع الوذمة الشحمية في صلب النقاش الصحي",
+            url: "https://lallafatema.ma/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D8%AA%D8%B6%D8%B9-%D8%A7%D9%84%D9%88%D8%B0%D9%85%D8%A9-%D8%A7%D9%84%D8%B4%D8%AD%D9%85%D9%8A%D8%A9",
+            color: "#A03D6D",
+        },
+        {
+            id: "lux-radio",
+            kind: "radio-link",
+            source: "Lux Radio",
+            dateValue: "2026-02-18",
+            date: lang === "fr" ? "18 Fevrier 2026" : lang === "en" ? "February 18, 2026" : "18 فبراير 2026",
+            title: lang === "fr" ? "Creation au Maroc d'une societe dediee au lipœdeme" : lang === "en" ? "Creation in Morocco of a society dedicated to lipedema" : "تأسيس جمعية مكرسة للوذمة الشحمية في المغرب",
+            description: lang === "fr" ? "Intervention radio autour de la creation de MOSLIPOD et de la sensibilisation au lipœdeme." : lang === "en" ? "Radio segment about MOSLIPOD's creation and lipedema awareness." : "فقرة إذاعية حول تأسيس MOSLIPOD والتوعية بالوذمة الشحمية.",
+            url: "https://open.luxeradio.ma/show/track/b0114171a30638cfa7bbbd0e0a17c16b?audio=creation-au-maroc-dune-societe-dediee-au-lipoedeme",
+            color: "#2D728F",
+        },
+        {
+            id: "temps-mag",
+            kind: "press",
+            source: "LE TEMPS MAGAZINE",
+            dateValue: "2026-02-17",
+            date: lang === "fr" ? "17 Fevrier 2026" : lang === "en" ? "February 17, 2026" : "17 فبراير 2026",
+            title: lang === "fr" ? "Demarrage de la Societe Marocaine du Lipœdeme et des Pathologies Associees" : lang === "en" ? "Launch of the Moroccan Society of Lipedema and Associated Pathologies" : "انطلاق الجمعية المغربية للوذمة الشحمية والأمراض المصاحبة",
+            url: "https://letempsmag.ma/?p=42539",
+            color: "#2C6E91",
+        },
+        {
+            id: "aswat",
+            kind: "radio-audio",
+            source: "RADIO ASWAT",
+            dateValue: "2026-02-17",
+            date: lang === "fr" ? "17 Fevrier 2026" : lang === "en" ? "February 17, 2026" : "17 فبراير 2026",
+            title: lang === "fr" ? "Interview radio - Radio ASWAT" : lang === "en" ? "Radio Interview - Radio ASWAT" : "مقابلة إذاعية - راديو أصوات",
+            description: lang === "fr" ? "Ecoutez l'extrait audio de l'intervention sur Radio ASWAT directement sur notre site." : lang === "en" ? "Listen to the Radio ASWAT intervention excerpt directly on our site." : "استمعوا إلى مقتطف مداخلة راديو أصوات مباشرة على موقعنا.",
+            color: "#1f4f41",
+        },
+    ]
+
+    const sortedMediaUpdates = [...mediaUpdates].sort((a, b) => b.dateValue.localeCompare(a.dateValue))
 
     return (
         <div className="bg-white transition-colors duration-300 overflow-hidden">
@@ -447,128 +523,12 @@ export default function Home({ lang = "fr" }) {
                         </p>
                     </motion.div>
 
-                    {/* ═══════════════════════════════════════════════ */}
-                    {/* BLOCK 1 — Presse écrite / Web                 */}
-                    {/* ═══════════════════════════════════════════════ */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="mb-16"
                     >
-                        <div className="flex items-center gap-3 mb-8">
-                            <div className="w-10 h-10 rounded-xl bg-[#538270] text-white flex items-center justify-center">
-                                <Newspaper size={20} />
-                            </div>
-                            <h3 className="text-2xl sm:text-3xl font-bold text-[#538270]">
-                                {lang === "fr" ? "Presse écrite & Web" : lang === "en" ? "Print & Online Press" : "الصحافة المكتوبة والإلكترونية"}
-                            </h3>
-                        </div>
-
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-                        >
-                            {[
-                                {
-                                    source: "LE TEMPS MAGAZINE",
-                                    title: lang === "fr" ? "Démarrage de la Société Marocaine du Lipœdème et des Pathologies Associées" : lang === "en" ? "Launch of the Moroccan Society of Lipedema and Associated Pathologies" : "انطلاق الجمعية المغربية للوذمة الشحمية والأمراض المصاحبة",
-                                    date: lang === "fr" ? "17 Février 2026" : lang === "en" ? "February 17, 2026" : "17 فبراير 2026",
-                                    url: "https://letempsmag.ma/?p=42539",
-                                    color: "#2C6E91",
-                                },
-                                {
-                                    source: "LALLA FATEMA",
-                                    title: lang === "fr" ? "Association marocaine: la lipœdème au cœur du débat de santé" : lang === "en" ? "Moroccan association puts lipedema at the center of health debate" : "جمعية مغربية جديدة تضع الوذمة الشحمية في صلب النقاش الصحي",
-                                    date: lang === "fr" ? "18 Février 2026" : lang === "en" ? "February 18, 2026" : "18 فبراير 2026",
-                                    url: "https://lallafatema.ma/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D8%AA%D8%B6%D8%B9-%D8%A7%D9%84%D9%88%D8%B0%D9%85%D8%A9-%D8%A7%D9%84%D8%B4%D8%AD%D9%85%D9%8A%D8%A9",
-                                    color: "#A03D6D",
-                                },
-                                {
-                                    source: "AUJOURD'HUI LE MAROC",
-                                    title: lang === "fr" ? "Création de Moslipod : Une avancée majeure pour la reconnaissance du lipœdème au Maroc" : lang === "en" ? "Creation of Moslipod: A major step forward for lipedema recognition in Morocco" : "إنشاء MOSLIPOD: تقدم كبير للاعتراف بالوذمة الشحمية في المغرب",
-                                    date: lang === "fr" ? "20 Février 2026" : lang === "en" ? "February 20, 2026" : "20 فبراير 2026",
-                                    url: "https://aujourdhui.ma/lifestyle/creation-de-moslipod-une-avancee-majeure-pour-la-reconnaissance-du-lipoedeme-au-maroc#google_vignette",
-                                    color: "#1D3557",
-                                },
-                                {
-                                    source: "LE MATIN",
-                                    title: lang === "fr" ? "Lipœdème : une association voit le jour pour briser le silence autour d'une maladie méconnue" : lang === "en" ? "Lipedema: an association is launched to break the silence around an unknown disease" : "الوذمة الشحمية: جمعية جديدة لكسر الصمت حول مرض غير معروف",
-                                    date: lang === "fr" ? "22 Février 2026" : lang === "en" ? "February 22, 2026" : "22 فبراير 2026",
-                                    url: "https://lematin.ma/societe/lipdeme-la-creation-de-moslipod-pour-briser-le-silence/331201",
-                                    color: "#264653",
-                                },
-                                {
-                                    source: "2M.MA",
-                                    title: lang === "fr" ? "Lipœdème : le Maroc se dote d'une association scientifique pour mieux reconnaître cette maladie méconnue" : lang === "en" ? "Lipedema: Morocco creates a scientific association to better recognize this underdiagnosed disease" : "الوذمة الشحمية: المغرب يؤسس جمعية علمية لتعزيز التعرف على هذا المرض",
-                                    date: lang === "fr" ? "24 Février 2026" : lang === "en" ? "February 24, 2026" : "24 فبراير 2026",
-                                    url: "https://2m.ma//fr/news/Lip%C5%93d%C3%A8me-le-Maroc-se-dote-d-une-association-scientifique-pour-20260224",
-                                    color: "#457B9D",
-                                },
-                            ].map((article, i) => (
-                                <motion.div
-                                    key={i}
-                                    variants={itemVariants}
-                                    whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(83, 130, 112, 0.15)" }}
-                                    className="bg-white border border-[#B4C9B3]/30 rounded-2xl overflow-hidden shadow-md hover:border-[#538270]/40 transition-all duration-300 flex flex-col"
-                                >
-                                    {/* Source badge strip */}
-                                    <div className="px-6 pt-5 pb-3 flex items-center justify-between">
-                                        <span
-                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-xs font-bold uppercase tracking-wider"
-                                            style={{ backgroundColor: article.color }}
-                                        >
-                                            <Newspaper size={13} />
-                                            {article.source}
-                                        </span>
-                                        <span className="text-xs text-gray-400 font-medium">{article.date}</span>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="px-6 pb-2 flex-1">
-                                        <h4 className="text-[#2d2d2d] font-bold text-base leading-snug line-clamp-3 mb-3">
-                                            {article.title}
-                                        </h4>
-                                    </div>
-
-                                    {/* CTA */}
-                                    <div className="px-6 pb-5">
-                                        <a
-                                            href={article.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-[#538270] font-semibold text-sm hover:text-[#3d5f52] group transition-colors"
-                                        >
-                                            {lang === "fr" ? "Lire l'article" : lang === "en" ? "Read article" : "اقرأ المقال"}
-                                            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                                        </a>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-
-                    </motion.div>
-
-                    {/* ═══════════════════════════════════════════════ */}
-                    {/* BLOCK 2 — Radio / Podcasts                    */}
-                    {/* ═══════════════════════════════════════════════ */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="flex items-center gap-3 mb-8">
-                            <div className="w-10 h-10 rounded-xl bg-[#538270] text-white flex items-center justify-center">
-                                <Radio size={20} />
-                            </div>
-                            <h3 className="text-2xl sm:text-3xl font-bold text-[#538270]">
-                                {lang === "fr" ? "Radio & Podcasts" : lang === "en" ? "Radio & Podcasts" : "الإذاعة والبودكاست"}
-                            </h3>
-                        </div>
-
                         <motion.div
                             variants={containerVariants}
                             initial="hidden"
@@ -576,116 +536,104 @@ export default function Home({ lang = "fr" }) {
                             viewport={{ once: true }}
                             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
                         >
-                            {/* Radio card — Lux Radio */}
-                            <motion.div
-                                variants={itemVariants}
-                                whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(83, 130, 112, 0.15)" }}
-                                className="bg-white border border-[#B4C9B3]/30 rounded-2xl overflow-hidden shadow-md hover:border-[#538270]/40 transition-all duration-300 flex flex-col"
-                            >
-                                <div className="px-6 pt-5 pb-3 flex items-center justify-between">
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#7B2D8E] to-[#9B59B6] text-white text-xs font-bold uppercase tracking-wider">
-                                        <Radio size={13} />
-                                        Lux Radio
-                                    </span>
-                                    <span className="text-xs text-gray-400 font-medium">
-                                        {lang === "fr" ? "18 Février 2026" : lang === "en" ? "February 18, 2026" : "18 فبراير 2026"}
-                                    </span>
-                                </div>
-                                <div className="px-6 pb-2 flex-1">
-                                    <h4 className="text-[#2d2d2d] font-bold text-base leading-snug mb-2">
-                                        {lang === "fr" ? "Création au Maroc d'une société dédiée au lipœdème" : lang === "en" ? "Creation in Morocco of a society dedicated to lipedema" : "تأسيس جمعية مكرسة للوذمة الشحمية في المغرب"}
-                                    </h4>
-                                    <p className="text-sm text-gray-500 leading-relaxed">
-                                        {lang === "fr" ? "Intervention radio autour de la création de MOSLIPOD et de la sensibilisation au lipœdème." : lang === "en" ? "Radio segment about MOSLIPOD's creation and lipedema awareness." : "فقرة إذاعية حول تأسيس MOSLIPOD والتوعية بالوذمة الشحمية."}
-                                    </p>
-                                </div>
-                                <div className="px-6 pb-5">
-                                    <a
-                                        href="https://open.luxeradio.ma/show/track/b0114171a30638cfa7bbbd0e0a17c16b?audio=creation-au-maroc-dune-societe-dediee-au-lipoedeme"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#538270] to-[#3d5f52] text-white font-semibold text-sm hover:shadow-lg transition-all duration-300 group"
-                                    >
-                                        <Play size={14} />
-                                        {lang === "fr" ? "Écouter l'émission" : lang === "en" ? "Listen to the show" : "استمع إلى البرنامج"}
-                                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                    </a>
-                                </div>
-                            </motion.div>
+                            {sortedMediaUpdates.map((article, i) => (
+                                <motion.div
+                                    key={article.id}
+                                    variants={itemVariants}
+                                    whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(83, 130, 112, 0.15)" }}
+                                    className={`rounded-2xl overflow-hidden shadow-md transition-all duration-300 flex flex-col ${article.kind === "radio-audio" ? "bg-gradient-to-br from-[#538270] to-[#3d5f52] text-white" : "bg-white border border-[#B4C9B3]/30 hover:border-[#538270]/40"}`}
+                                >
+                                    <div className="h-1.5" style={{ backgroundColor: article.color }} />
 
-                            {/* Radio card — Radio ASWAT (with embedded player) */}
-                            <motion.div
-                                variants={itemVariants}
-                                whileHover={{ y: -8 }}
-                                className="bg-gradient-to-br from-[#538270] to-[#3d5f52] rounded-2xl overflow-hidden shadow-xl text-white flex flex-col"
-                            >
-                                <div className="px-6 pt-5 pb-3 flex items-center justify-between">
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/25 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-                                        <Mic2 size={13} />
-                                        RADIO ASWAT
-                                    </span>
-                                    <span className="text-xs text-white/70 font-medium">
-                                        {lang === "fr" ? "Extrait audio" : lang === "en" ? "Audio excerpt" : "مقتطف صوتي"}
-                                    </span>
-                                </div>
-                                <div className="px-6 pb-2 flex-1">
-                                    <h4 className="text-white font-bold text-base leading-snug mb-2">
-                                        {lang === "fr" ? "Interview radio — Radio ASWAT" : lang === "en" ? "Radio Interview — Radio ASWAT" : "مقابلة إذاعية — راديو أصوات"}
-                                    </h4>
-                                    <p className="text-sm text-white/75 leading-relaxed">
-                                        {lang === "fr"
-                                            ? "Écoutez l'extrait audio de l'intervention sur Radio ASWAT directement sur notre site."
-                                            : lang === "en"
-                                                ? "Listen to the Radio ASWAT intervention excerpt directly on our site."
-                                                : "استمعوا إلى مقتطف مداخلة راديو أصوات مباشرة على موقعنا."}
-                                    </p>
-                                </div>
-                                <div className="px-6 pb-5">
-                                    <audio
-                                        ref={audioRef}
-                                        className="hidden"
-                                        preload="metadata"
-                                        onLoadedMetadata={handleAudioLoadedMetadata}
-                                        onTimeUpdate={handleAudioTimeUpdate}
-                                        onEnded={handleAudioEnded}
-                                    >
-                                        <source src="/media/hdit-04-03-2026.mpeg" type="audio/mpeg" />
-                                        {lang === "fr"
-                                            ? "Votre navigateur ne supporte pas la lecture audio."
-                                            : lang === "en"
-                                                ? "Your browser does not support audio playback."
-                                                : "متصفحكم لا يدعم تشغيل الصوت."}
-                                    </audio>
-                                    <div className="rounded-xl bg-white/15 border border-white/25 p-3 backdrop-blur-sm">
-                                        <div className="flex items-center gap-3">
-                                            <button
-                                                type="button"
-                                                onClick={toggleAudioPlayback}
-                                                className="w-10 h-10 rounded-full bg-white text-[#538270] flex items-center justify-center hover:scale-110 transition-transform flex-shrink-0"
-                                                aria-label={isAudioPlaying ? "Pause audio" : "Play audio"}
+                                    <div className="px-6 pt-5 pb-3 flex items-center justify-between">
+                                        <span
+                                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider ${article.kind === "radio-audio" ? "bg-white/20 text-white" : "text-white"}`}
+                                            style={article.kind === "radio-audio" ? undefined : { backgroundColor: article.color }}
+                                        >
+                                            {article.kind === "press" ? <Newspaper size={13} /> : article.kind === "radio-link" ? <PlayCircle size={13} /> : <Mic2 size={13} />}
+                                            {article.source}
+                                        </span>
+                                        <span className={`text-xs font-medium inline-flex items-center gap-1 ${article.kind === "radio-audio" ? "text-white/80" : "text-gray-400"}`}>
+                                            <CalendarDays size={12} />
+                                            {article.date}
+                                        </span>
+                                    </div>
+
+                                    <div className="px-6 pb-2 flex-1">
+                                        <h4 className={`font-bold text-base leading-snug line-clamp-3 mb-3 ${article.kind === "radio-audio" ? "text-white" : "text-[#2d2d2d]"}`}>
+                                            {article.title}
+                                        </h4>
+                                        {article.description && (
+                                            <p className={`text-sm leading-relaxed ${article.kind === "radio-audio" ? "text-white/75" : "text-gray-500"}`}>
+                                                {article.description}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {article.kind === "radio-audio" ? (
+                                        <div className="px-6 pb-5">
+                                            <audio
+                                                ref={audioRef}
+                                                className="hidden"
+                                                preload="metadata"
+                                                onLoadedMetadata={handleAudioLoadedMetadata}
+                                                onTimeUpdate={handleAudioTimeUpdate}
+                                                onEnded={handleAudioEnded}
                                             >
-                                                {isAudioPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
-                                            </button>
-                                            <div className="flex-1 min-w-0">
-                                                <input
-                                                    type="range"
-                                                    min="0"
-                                                    max={audioDuration || 0}
-                                                    step="0.1"
-                                                    value={audioCurrentTime}
-                                                    onChange={handleAudioSeek}
-                                                    className="w-full accent-[#B4C9B3]"
-                                                />
-                                                <div className="flex justify-between text-xs text-white/80 mt-0.5">
-                                                    <span>{formatAudioTime(audioCurrentTime)}</span>
-                                                    <span>{formatAudioTime(audioDuration)}</span>
+                                                <source src="/media/hdit-04-03-2026.mpeg" type="audio/mpeg" />
+                                                {lang === "fr"
+                                                    ? "Votre navigateur ne supporte pas la lecture audio."
+                                                    : lang === "en"
+                                                        ? "Your browser does not support audio playback."
+                                                        : "متصفحكم لا يدعم تشغيل الصوت."}
+                                            </audio>
+                                            <div className="rounded-xl bg-white/15 border border-white/25 p-3 backdrop-blur-sm">
+                                                <div className="flex items-center gap-3">
+                                                    <button
+                                                        type="button"
+                                                        onClick={toggleAudioPlayback}
+                                                        className="w-10 h-10 rounded-full bg-white text-[#538270] flex items-center justify-center hover:scale-110 transition-transform flex-shrink-0"
+                                                        aria-label={isAudioPlaying ? "Pause audio" : "Play audio"}
+                                                    >
+                                                        {isAudioPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                                                    </button>
+                                                    <div className="flex-1 min-w-0">
+                                                        <input
+                                                            type="range"
+                                                            min="0"
+                                                            max={audioDuration || 0}
+                                                            step="0.1"
+                                                            value={audioCurrentTime}
+                                                            onChange={handleAudioSeek}
+                                                            className="w-full accent-[#B4C9B3]"
+                                                        />
+                                                        <div className="flex justify-between text-xs text-white/80 mt-0.5">
+                                                            <span>{formatAudioTime(audioCurrentTime)}</span>
+                                                            <span>{formatAudioTime(audioDuration)}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                    ) : (
+                                        <div className="px-6 pb-5">
+                                            <a
+                                                href={article.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`inline-flex items-center gap-2 font-semibold text-sm group transition-colors ${article.kind === "radio-link" ? "text-[#2D728F] hover:text-[#1f4f41]" : "text-[#538270] hover:text-[#3d5f52]"}`}
+                                            >
+                                                {article.kind === "radio-link"
+                                                    ? (lang === "fr" ? "Ecouter l'emission" : lang === "en" ? "Listen to the show" : "استمع إلى البرنامج")
+                                                    : (lang === "fr" ? "Lire l'article" : lang === "en" ? "Read article" : "اقرأ المقال")}
+                                                <ExternalLink size={15} className="group-hover:translate-x-1 transition-transform" />
+                                            </a>
+                                        </div>
+                                    )}
+                                </motion.div>
+                            ))}
                         </motion.div>
+
                     </motion.div>
                 </div>
             </section>
