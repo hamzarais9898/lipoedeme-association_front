@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Users, Target, Lightbulb, BookOpen, Award, Globe, ArrowRight, FileText } from "lucide-react"
+import { Users, Target, Lightbulb, BookOpen, Award, Globe, ArrowRight} from "lucide-react"
 import { t } from "../context/translations"
 import SEO from "../components/SEO"
 
@@ -248,8 +248,6 @@ export default function About({ lang = "fr" }) {
                     </motion.div>
                 </div>
             </section>
-
-            // ...existing code...
 
             {/* CTA SECTION */}
             <section className="py-20 sm:py-32 px-4 bg-white relative overflow-hidden">
