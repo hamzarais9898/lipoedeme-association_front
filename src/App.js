@@ -15,14 +15,28 @@ import News from './pages/News';
 import Admin from './pages/Admin';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import LegalMentions from './pages/LegalMentions';
+import InstagramPopup from './components/InstagramPopup';
 
 function App() {
   const [lang, setLang] = useState('fr');
+  const [showInstaPopup, setShowInstaPopup] = useState(false);
 
   useEffect(() => {
     document.documentElement.dir = 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('instaPopupSeen')) {
+      const timer = setTimeout(() => setShowInstaPopup(true), 1200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeInstaPopup = () => {
+    sessionStorage.setItem('instaPopupSeen', 'true');
+    setShowInstaPopup(false);
+  };
 
   return (
     <HelmetProvider>
@@ -44,6 +58,7 @@ function App() {
           </Routes>
         </main>
         <Footer lang={lang} />
+        <InstagramPopup isOpen={showInstaPopup} onClose={closeInstaPopup} />
         </div>
       </Router>
     </HelmetProvider>
