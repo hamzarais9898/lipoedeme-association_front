@@ -34,3 +34,6 @@ pnpm-debug.log*
 *.swp
 *.swo
 *.tgz
+
+# Raw source videos (originals — compressed versions live in public/videos)
+src/*.mp4
