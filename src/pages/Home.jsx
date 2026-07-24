@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import { Phone, Mail, MapPin, ArrowRight, Send, CheckCircle2, AlertCircle, Droplet, Activity, Zap, Heart, Users, CalendarDays, ExternalLink, Newspaper, Play, Pause, PlayCircle, Mic2 } from "lucide-react"
 import { t } from "../context/translations"
 import SEO from "../components/SEO"
-import VideoShowcase from "../components/VideoShowcase"
 import image1 from "../assets/images/logo1.png"
 
 const containerVariants = {
@@ -351,9 +350,6 @@ export default function Home({ lang = "fr" }) {
                     </motion.div>
                 </div>
             </section>
-
-            {/* VIDEO SHOWCASE SECTION - FR / AR versions */}
-            <VideoShowcase lang={lang} />
 
             {/* WHAT IS LIPEDEMA SECTION - Interactive Cards */}
             <section className="pt-16 pb-32 px-4 bg-gradient-to-b from-white via-[#F5F1EB]/40 to-white relative transition-colors duration-300">

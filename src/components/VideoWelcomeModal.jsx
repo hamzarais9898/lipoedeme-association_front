@@ -7,8 +7,6 @@ const VIDEOS = {
     ar: { src: "/videos/presentation-ar.mp4", poster: "/videos/poster-ar.jpg" },
 }
 
-const SEEN_KEY = "moslipod-welcome-video-seen"
-
 const formatTime = (seconds) => {
     if (!Number.isFinite(seconds)) return "0:00"
     const m = Math.floor(seconds / 60)
@@ -29,23 +27,9 @@ export default function VideoWelcomeModal({ lang = "fr" }) {
     const [isBuffering, setIsBuffering] = useState(false)
     const [controlsVisible, setControlsVisible] = useState(true)
 
-    // Open once per browsing session, shortly after arrival
+    // Open on every arrival on the site, shortly after load
     useEffect(() => {
-        let seen = false
-        try {
-            seen = sessionStorage.getItem(SEEN_KEY) === "1"
-        } catch {
-            seen = false
-        }
-        if (seen) return
-        const timer = setTimeout(() => {
-            setIsOpen(true)
-            try {
-                sessionStorage.setItem(SEEN_KEY, "1")
-            } catch {
-                // storage unavailable — the popup simply reappears next time
-            }
-        }, 700)
+        const timer = setTimeout(() => setIsOpen(true), 700)
         return () => clearTimeout(timer)
     }, [])
 
