@@ -17,6 +17,7 @@ const formatTime = (seconds) => {
 export default function VideoWelcomeModal({ lang = "fr" }) {
     const videoRef = useRef(null)
     const hideControlsTimer = useRef(null)
+    const isFirstVersionEffect = useRef(true)
     const [isOpen, setIsOpen] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const [hasStarted, setHasStarted] = useState(false)
@@ -35,13 +36,19 @@ export default function VideoWelcomeModal({ lang = "fr" }) {
         return () => clearTimeout(timer)
     }, [])
 
-    // Reset the player when the site language switches the video
+    // Reset the player when the site language switches the video,
+    // and reopen the popup so the new version is shown
     useEffect(() => {
         setIsPlaying(false)
         setHasStarted(false)
         setCurrentTime(0)
         setDuration(0)
         setIsBuffering(false)
+        if (isFirstVersionEffect.current) {
+            isFirstVersionEffect.current = false
+            return
+        }
+        setIsOpen(true)
     }, [version])
 
     // Lock body scroll + close on Escape while open
