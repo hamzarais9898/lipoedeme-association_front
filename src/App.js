@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import VideoWelcomeModal from './components/VideoWelcomeModal';
 import Home from './pages/Home';
 import About from './pages/About';
 import Lipoedeme from './pages/Lipoedeme';
@@ -29,6 +30,7 @@ function App() {
       <Router>
         <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
         <Header currentLang={lang} onLangChange={setLang} />
+        <VideoWelcomeModal lang={lang} />
         <main className="flex-grow pt-24 w-full">
           <Routes>
             <Route path="/" element={<Home lang={lang} />} />
