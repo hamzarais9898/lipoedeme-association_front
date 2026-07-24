@@ -14,7 +14,7 @@ const formatTime = (seconds) => {
     return `${m}:${s}`
 }
 
-export default function VideoWelcomeModal({ lang = "fr" }) {
+export default function VideoWelcomeModal({ lang = "fr", onLangChange }) {
     const videoRef = useRef(null)
     const hideControlsTimer = useRef(null)
     const isFirstVersionEffect = useRef(true)
@@ -130,6 +130,7 @@ export default function VideoWelcomeModal({ lang = "fr" }) {
         close: lang === "fr" ? "Fermer" : lang === "en" ? "Close" : "إغلاق",
         loading: lang === "fr" ? "Chargement de la vidéo…" : lang === "en" ? "Loading video…" : "جارٍ تحميل الفيديو…",
         play: lang === "fr" ? "Lire la vidéo" : lang === "en" ? "Play video" : "تشغيل الفيديو",
+        switchLang: lang === "fr" ? "Changer la langue" : lang === "en" ? "Switch language" : "تغيير اللغة",
     }
 
     return (
@@ -154,10 +155,35 @@ export default function VideoWelcomeModal({ lang = "fr" }) {
                         className="relative w-full max-w-4xl"
                         onClick={(e) => e.stopPropagation()}
                     >
+                        {/* Language switch above the video */}
+                        <div className="flex justify-center mb-4" role="group" aria-label={labels.switchLang}>
+                            <div className="inline-flex items-center gap-1 p-1.5 rounded-full bg-white/95 border border-[#B4C9B3]/50 shadow-lg backdrop-blur-sm">
+                                {[
+                                    { key: "fr", label: "Français" },
+                                    { key: "ar", label: "العربية" },
+                                ].map((option) => (
+                                    <button
+                                        key={option.key}
+                                        type="button"
+                                        onClick={() => onLangChange?.(option.key)}
+                                        className={`relative px-5 sm:px-6 py-2 rounded-full font-bold text-sm transition-colors duration-300 ${version === option.key ? "text-white" : "text-[#538270] hover:bg-[#F5F1EB]"}`}
+                                    >
+                                        {version === option.key && (
+                                            <motion.span
+                                                layoutId="welcome-video-lang-pill"
+                                                className="absolute inset-0 rounded-full bg-gradient-to-r from-[#538270] to-[#3d5f52] shadow-md"
+                                                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">{option.label}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="relative">
                         {/* Gradient frame glow */}
                         <div className="absolute -inset-1.5 sm:-inset-2 rounded-[2rem] bg-gradient-to-br from-[#B4C9B3] via-[#538270]/60 to-[#B4C9B3] opacity-40 blur-lg pointer-events-none" />
-
-                        {/* Video player */}
                         <div
                             className="relative rounded-[1.75rem] overflow-hidden shadow-2xl bg-black aspect-video group"
                             onMouseMove={revealControls}
@@ -304,6 +330,7 @@ export default function VideoWelcomeModal({ lang = "fr" }) {
                             >
                                 <X size={18} />
                             </button>
+                        </div>
                         </div>
                     </motion.div>
                 </motion.div>

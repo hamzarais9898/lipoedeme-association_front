@@ -30,7 +30,7 @@ function App() {
       <Router>
         <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
         <Header currentLang={lang} onLangChange={setLang} />
-        <VideoWelcomeModal lang={lang} />
+        <VideoWelcomeModal lang={lang} onLangChange={setLang} />
         <main className="flex-grow pt-24 w-full">
           <Routes>
             <Route path="/" element={<Home lang={lang} />} />
