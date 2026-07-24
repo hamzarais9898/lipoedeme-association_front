@@ -23,6 +23,7 @@ export default function VideoShowcase({ lang = "fr" }) {
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [isMuted, setIsMuted] = useState(false)
+    const [isBuffering, setIsBuffering] = useState(false)
     const [controlsVisible, setControlsVisible] = useState(true)
 
     // Follow the site language when the user switches it
@@ -36,6 +37,7 @@ export default function VideoShowcase({ lang = "fr" }) {
         setHasStarted(false)
         setCurrentTime(0)
         setDuration(0)
+        setIsBuffering(false)
     }, [version])
 
     useEffect(() => () => clearTimeout(hideControlsTimer.current), [])
@@ -50,11 +52,15 @@ export default function VideoShowcase({ lang = "fr" }) {
         const video = videoRef.current
         if (!video) return
         if (video.paused) {
+            setIsBuffering(true)
             video.play().then(() => {
                 setIsPlaying(true)
                 setHasStarted(true)
                 revealControls()
-            }).catch(() => setIsPlaying(false))
+            }).catch(() => {
+                setIsPlaying(false)
+                setIsBuffering(false)
+            })
         } else {
             video.pause()
             setIsPlaying(false)
@@ -96,6 +102,7 @@ export default function VideoShowcase({ lang = "fr" }) {
                 ? "Our mission, our actions and our commitment to lipedema recognition — on screen."
                 : "مهمتنا وأعمالنا والتزامنا من أجل الاعتراف بالوذمة الشحمية — بالصورة.",
         watchIn: lang === "fr" ? "Choisir la langue de la vidéo" : lang === "en" ? "Choose the video language" : "اختر لغة الفيديو",
+        loading: lang === "fr" ? "Chargement de la vidéo…" : lang === "en" ? "Loading video…" : "جارٍ تحميل الفيديو…",
     }
 
     return (
@@ -194,18 +201,41 @@ export default function VideoShowcase({ lang = "fr" }) {
                                 className="w-full h-full object-cover"
                                 src={VIDEOS[version].src}
                                 poster={VIDEOS[version].poster}
-                                preload="none"
+                                preload="metadata"
                                 playsInline
                                 onClick={togglePlay}
                                 onLoadedMetadata={(e) => setDuration(e.target.duration || 0)}
                                 onTimeUpdate={(e) => setCurrentTime(e.target.currentTime || 0)}
+                                onWaiting={() => setIsBuffering(true)}
+                                onPlaying={() => setIsBuffering(false)}
+                                onCanPlay={() => setIsBuffering(false)}
                                 onEnded={() => { setIsPlaying(false); setControlsVisible(true) }}
                             />
                         </AnimatePresence>
 
+                        {/* Buffering spinner */}
+                        <AnimatePresence>
+                            {isBuffering && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-black/50 pointer-events-none"
+                                >
+                                    <div className="relative w-14 h-14">
+                                        <div className="absolute inset-0 rounded-full border-4 border-white/25" />
+                                        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#B4C9B3] animate-spin" />
+                                    </div>
+                                    <span className="text-white/90 text-sm font-semibold tracking-wide">
+                                        {labels.loading}
+                                    </span>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                         {/* Center play button */}
                         <AnimatePresence>
-                            {!isPlaying && (
+                            {!isPlaying && !isBuffering && (
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
